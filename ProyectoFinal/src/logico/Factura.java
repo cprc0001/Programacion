@@ -50,5 +50,18 @@ public class Factura {
 	}
 	
  
+   public float PrecioFactura() {
+	float precio=0;
+	   for (Combo combo : misCombos) {
+		   
+	   }
+	   
+	   for (Componente componente :misComponentes) {
+		   precio += componente.precio;
+	   }
+	
+	   return precio;
+	     
+   }
 	
 }
