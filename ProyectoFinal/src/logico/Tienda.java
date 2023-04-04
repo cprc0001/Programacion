@@ -82,6 +82,21 @@ public class Tienda {
 	public void insertarCliente (Cliente cliente) {
 		misClientes.add(cliente);
 	}
+
+	public Componente EncontrarComponente(String codigo) {
+		Componente aux = null;
+		for (Componente comp : misComponentes) {
+			if (comp.getCodigo().equalsIgnoreCase(codigo)) {
+				aux = comp;
+			}
+		}
+		return aux;
+	}
+
+	public void EliminarComponente(Componente selected) {
+		misComponentes.remove(selected);
+		
+	}
 	
 	
 	
