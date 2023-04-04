@@ -2,6 +2,7 @@ package logico;
 
 import java.util.ArrayList;
 
+
 public class Tienda {
 
 	private ArrayList<Cliente> misClientes;
@@ -96,6 +97,10 @@ public class Tienda {
 	public void EliminarComponente(Componente selected) {
 		misComponentes.remove(selected);
 		
+	}
+	
+	public void ModificarCliente(Cliente cliente) { //parametro nuevo añadido
+	
 	}
 	
 	
