@@ -5,14 +5,16 @@ public abstract class Componente {
 	protected String marca;
 	protected float precio;
 	protected int disponibles;
+	protected int dispMin;
 	protected int serie;
 	
 
-	public Componente(String marca, float precio, int disponibles, int serie) {
+	public Componente(String marca, float precio, int serie) {
 		super();
 		this.marca = marca;
 		this.precio = precio;
-		this.disponibles = disponibles;
+		this.disponibles = 0;
+		this.dispMin = 0;
 		this.serie = serie;
 	}
 

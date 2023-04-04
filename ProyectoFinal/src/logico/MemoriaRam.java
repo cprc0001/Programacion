@@ -6,7 +6,7 @@ public class MemoriaRam extends Componente {
 	private String tipo;
 	
 	public MemoriaRam(String marca, float precio, int disponibles, int serie, int memoria, String tipo) {
-		super(marca, precio, disponibles, serie);
+		super(marca, precio, serie);
 		this.memoria = memoria;
 		this.tipo = tipo;
 	}

@@ -9,7 +9,7 @@ public class DiscoDuro extends Componente {
 	
 	public DiscoDuro(String marca, float precio, int disponibles, int serie, String modelo, int capacidad,
 			String tipoConexion) {
-		super(marca, precio, disponibles, serie);
+		super(marca, precio, serie);
 		this.modelo = modelo;
 		this.capacidad = capacidad;
 		this.tipoConexion = tipoConexion;

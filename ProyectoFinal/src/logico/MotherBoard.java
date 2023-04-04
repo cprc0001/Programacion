@@ -10,7 +10,7 @@ public class MotherBoard extends Componente {
    
 public MotherBoard(String marca, float precio, int disponibles, int serie, String modelo, String tipoConector,
 		String tipoMemoria, String conexionesDisco) {
-	super(marca, precio, disponibles, serie);
+	super(marca, precio, serie);
 	this.modelo = modelo;
 	this.tipoConector = tipoConector;
 	this.tipoMemoria = tipoMemoria;
