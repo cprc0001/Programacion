@@ -2,15 +2,17 @@ package logico;
 
 public abstract class Componente {
 
+	protected String codigo;
 	protected String marca;
 	protected float precio;
 	protected int disponibles;
 	protected int dispMin;
-	protected int serie;
+	protected String serie;
 	
 
-	public Componente(String marca, float precio, int serie) {
+	public Componente(String codigo, String marca, float precio, String serie) {
 		super();
+		this.codigo = codigo;
 		this.marca = marca;
 		this.precio = precio;
 		this.disponibles = 0;
@@ -21,6 +23,16 @@ public abstract class Componente {
 
 	public String getMarca() {
 		return marca;
+	}
+
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
 	}
 
 
@@ -49,13 +61,23 @@ public abstract class Componente {
 	}
 
 
-	public int getSerie() {
+	public String getSerie() {
 		return serie;
 	}
 
 
-	public void setSerie(int serie) {
+	public void setSerie(String serie) {
 		this.serie = serie;
+	}
+
+
+	public int getDispMin() {
+		return dispMin;
+	}
+
+
+	public void setDispMin(int dispMin) {
+		this.dispMin = dispMin;
 	}
 	
 	

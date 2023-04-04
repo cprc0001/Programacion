@@ -1,14 +1,14 @@
 package logico;
 
-public class Microprocesadores extends Componente {
+public class Microprocesador extends Componente {
 
 	private String modelo;
 	private String tipoConexion;
-	private int velocidad;
+	private String velocidad;
 	
-	public Microprocesadores(String marca, float precio, int disponibles, int serie, String modelo, String tipoConexion,
-			int velocidad) {
-		super(marca, precio, serie);
+	public Microprocesador(String codigo, String marca, float precio, String serie, String modelo, String tipoConexion,
+			String velocidad) {
+		super(codigo, marca, precio, serie);
 		this.modelo = modelo;
 		this.tipoConexion = tipoConexion;
 		this.velocidad = velocidad;
@@ -30,13 +30,14 @@ public class Microprocesadores extends Componente {
 		this.tipoConexion = tipoConexion;
 	}
 
-	public int getVelocidad() {
+	public String getVelocidad() {
 		return velocidad;
 	}
 
-	public void setVelocidad(int velocidad) {
+	public void setVelocidad(String velocidad) {
 		this.velocidad = velocidad;
 	}
 	
 	
 }
+

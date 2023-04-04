@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
@@ -19,6 +20,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 import logico.Componente;
+import logico.DiscoDuro;
+import logico.MemoriaRam;
+import logico.Microprocesador;
+import logico.MotherBoard;
 import logico.Tienda;
 
 import javax.swing.JComboBox;
@@ -30,6 +35,8 @@ public class RegistroComp extends JDialog {
 	private JTextField textcodigo;
 	private JSpinner spnPrecio;
 	private JTextField txtSerie;
+	private JSpinner spnDispMin;
+	private JSpinner spnDispReal;
 	private JRadioButton rdbMotherBoard;
 	private JRadioButton rdbMemoriaRam;
 	private JRadioButton rdbMicroprocesador;
@@ -104,12 +111,12 @@ public class RegistroComp extends JDialog {
 			lblNoSerie.setBounds(233, 31, 77, 14);
 			panel.add(lblNoSerie);
 			
-			JSpinner spnDispMin = new JSpinner();
+			spnDispMin = new JSpinner();
 			spnDispMin.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 			spnDispMin.setBounds(152, 107, 103, 20);
 			panel.add(spnDispMin);
 			
-			JSpinner spnDispReal = new JSpinner();
+			spnDispReal = new JSpinner();
 			spnDispReal.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), null, new Integer(1)));
 			spnDispReal.setBounds(276, 107, 103, 20);
 			panel.add(spnDispReal);
@@ -206,55 +213,6 @@ public class RegistroComp extends JDialog {
 		
 		//c
 		
-		
-		pnlMotherBoard = new JPanel();
-		pnlMotherBoard.setVisible(false);
-		pnlMotherBoard.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		pnlMotherBoard.setBounds(5, 275, 394, 150);
-		contentPanel.add(pnlMotherBoard);
-		pnlMotherBoard.setLayout(null);
-
-		JLabel lblMarcaMo = new JLabel("Marca:");
-		lblMarcaMo.setBounds(15, 16, 84, 20);
-		pnlMotherBoard.add(lblMarcaMo);
-		
-		JLabel lblModeloMo = new JLabel("Modelo:");
-		lblModeloMo.setBounds(138, 16, 84, 20);
-		pnlMotherBoard.add(lblModeloMo);
-		
-		JLabel lblTipoConector = new JLabel("Tipo de Conector:");
-		lblTipoConector.setBounds(15, 80, 140, 20);
-		pnlMotherBoard.add(lblTipoConector);
-		
-		JComboBox cbxMarcaMo = new JComboBox();
-		cbxMarcaMo.setBounds(15, 38, 117, 26);
-		pnlMotherBoard.add(cbxMarcaMo);
-		
-		JComboBox cbxTipoMe = new JComboBox();
-		cbxTipoMe.setBounds(264, 38, 119, 26);
-		pnlMotherBoard.add(cbxTipoMe);
-		
-		JComboBox cbxModeloMo = new JComboBox();
-		cbxModeloMo.setBounds(138, 38, 117, 26);
-		pnlMotherBoard.add(cbxModeloMo);
-		
-		JComboBox cbxTipoConector = new JComboBox();
-		cbxTipoConector.setBounds(15, 109, 129, 26);
-		pnlMotherBoard.add(cbxTipoConector);
-		
-		JLabel lblTipoMe = new JLabel("Tipo de Memoria:");
-		lblTipoMe.setBounds(259, 16, 149, 20);
-		pnlMotherBoard.add(lblTipoMe);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(157, 108, 226, 26);
-		pnlMotherBoard.add(textArea);
-		
-		JLabel lblConexionesAdmitidas = new JLabel("Conexiones admitidas:");
-		lblConexionesAdmitidas.setBounds(161, 80, 167, 20);
-		pnlMotherBoard.add(lblConexionesAdmitidas);
-		
-		
 		pnlDiscoDuro = new JPanel();
 		pnlDiscoDuro.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		pnlDiscoDuro.setBounds(5, 275, 394, 150);
@@ -285,7 +243,7 @@ public class RegistroComp extends JDialog {
 		cbxModeloD.setBounds(207, 38, 167, 26);
 		pnlDiscoDuro.add(cbxModeloD);
 		
-		JComboBox cbxCapacidadD = new JComboBox();
+		final JComboBox cbxCapacidadD = new JComboBox();
 		cbxCapacidadD.setBounds(15, 108, 167, 26);
 		pnlDiscoDuro.add(cbxCapacidadD);
 		
@@ -309,7 +267,7 @@ public class RegistroComp extends JDialog {
 		lblCapacidadMe.setBounds(15, 85, 84, 20);
 		pnlMemoriaRam.add(lblCapacidadMe);
 		
-		JComboBox cbxMarcaMe = new JComboBox();
+		final JComboBox cbxMarcaMe = new JComboBox();
 		cbxMarcaMe.setBounds(15, 38, 167, 26);
 		pnlMemoriaRam.add(cbxMarcaMe);
 		
@@ -317,7 +275,7 @@ public class RegistroComp extends JDialog {
 		cbxCapacidad.setBounds(15, 108, 167, 26);
 		pnlMemoriaRam.add(cbxCapacidad);
 		
-		JComboBox cbxTipoMemoria = new JComboBox();
+		final JComboBox cbxTipoMemoria = new JComboBox();
 		cbxTipoMemoria.setBounds(207, 108, 167, 26);
 		pnlMemoriaRam.add(cbxTipoMemoria);
 		
@@ -346,19 +304,19 @@ public class RegistroComp extends JDialog {
 		lblVelocidad.setBounds(15, 85, 84, 20);
 		pnlMicroprocesador.add(lblVelocidad);
 		
-		JComboBox cbxMarcaMi = new JComboBox();
+		final JComboBox cbxMarcaMi = new JComboBox();
 		cbxMarcaMi.setBounds(15, 38, 167, 26);
 		pnlMicroprocesador.add(cbxMarcaMi);
 		
-		JComboBox cbxConexionMi = new JComboBox();
+		final JComboBox cbxConexionMi = new JComboBox();
 		cbxConexionMi.setBounds(207, 108, 167, 26);
 		pnlMicroprocesador.add(cbxConexionMi);
 		
-		JComboBox cbxModeloMi = new JComboBox();
+		final JComboBox cbxModeloMi = new JComboBox();
 		cbxModeloMi.setBounds(207, 38, 167, 26);
 		pnlMicroprocesador.add(cbxModeloMi);
 		
-		JComboBox cbxVelocidad = new JComboBox();
+		final JComboBox cbxVelocidad = new JComboBox();
 		cbxVelocidad.setBounds(15, 108, 167, 26);
 		pnlMicroprocesador.add(cbxVelocidad);
 		
@@ -367,6 +325,52 @@ public class RegistroComp extends JDialog {
 		pnlMicroprocesador.add(lblTipoConexMi);
 		
 	
+		pnlMotherBoard = new JPanel();
+		pnlMotherBoard.setVisible(false);
+		pnlMotherBoard.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		pnlMotherBoard.setBounds(5, 275, 394, 150);
+		contentPanel.add(pnlMotherBoard);
+		pnlMotherBoard.setLayout(null);
+
+		JLabel lblMarcaMo = new JLabel("Marca:");
+		lblMarcaMo.setBounds(15, 16, 84, 20);
+		pnlMotherBoard.add(lblMarcaMo);
+		
+		JLabel lblModeloMo = new JLabel("Modelo:");
+		lblModeloMo.setBounds(138, 16, 84, 20);
+		pnlMotherBoard.add(lblModeloMo);
+		
+		JLabel lblTipoConector = new JLabel("Tipo de Conector:");
+		lblTipoConector.setBounds(15, 80, 140, 20);
+		pnlMotherBoard.add(lblTipoConector);
+		
+		final JComboBox cbxMarcaMo = new JComboBox();
+		cbxMarcaMo.setBounds(15, 38, 117, 26);
+		pnlMotherBoard.add(cbxMarcaMo);
+		
+		final JComboBox cbxTipoMe = new JComboBox();
+		cbxTipoMe.setBounds(264, 38, 119, 26);
+		pnlMotherBoard.add(cbxTipoMe);
+		
+		final JComboBox cbxModeloMo = new JComboBox();
+		cbxModeloMo.setBounds(138, 38, 117, 26);
+		pnlMotherBoard.add(cbxModeloMo);
+		
+		final JComboBox cbxTipoConector = new JComboBox();
+		cbxTipoConector.setBounds(15, 109, 129, 26);
+		pnlMotherBoard.add(cbxTipoConector);
+		
+		JLabel lblTipoMe = new JLabel("Tipo de Memoria:");
+		lblTipoMe.setBounds(259, 16, 149, 20);
+		pnlMotherBoard.add(lblTipoMe);
+		
+		final JTextArea txtConexAd = new JTextArea();
+		txtConexAd.setBounds(157, 108, 226, 26);
+		pnlMotherBoard.add(txtConexAd);
+		
+		JLabel lblConexionesAdmitidas = new JLabel("Conexiones admitidas:");
+		lblConexionesAdmitidas.setBounds(161, 80, 167, 20);
+		pnlMotherBoard.add(lblConexionesAdmitidas);
 		
 		
 		{
@@ -384,11 +388,60 @@ public class RegistroComp extends JDialog {
 					if (rdbDiscoDuro.isSelected()) {
 						String marca = cbxMarcaD.getSelectedItem().toString();
 						String modelo = cbxModeloD.getSelectedItem().toString();
-						String capacidad = cbxCapacidad.getSelectedItem().toString();
+						String capacidad = cbxCapacidadD.getSelectedItem().toString();
 						String tipoC = cbxConexionD.getSelectedItem().toString();
-						//aux = new DiscoDuro (marca, precio,)
+						aux = new DiscoDuro (codigo, marca, precio, serie, modelo, capacidad, tipoC);
+						aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
+					    aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+						Tienda.getInstance().insertarComponente(aux);
+						JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+						clean();
+						
+					}
+					
+					if (rdbMemoriaRam.isSelected()) {
+						String marca = cbxMarcaMe.getSelectedItem().toString();
+						String memoria = cbxCapacidad.getSelectedItem().toString();
+						String tipoMe = cbxTipoMemoria.getSelectedItem().toString();
+						aux = new MemoriaRam (codigo, marca, precio, serie, memoria, tipoMe);
+						aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
+					    aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+						Tienda.getInstance().insertarComponente(aux);
+						JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+						clean();
+						
+					}
+					
+					if (rdbMicroprocesador.isSelected()) {
+						String marca = cbxMarcaMi.getSelectedItem().toString();
+						String modelo = cbxModeloMi.getSelectedItem().toString();
+						String tipoCon = cbxConexionMi.getSelectedItem().toString();
+						String velocidad = cbxVelocidad.getSelectedItem().toString();
+						aux = new Microprocesador (codigo, marca, precio, serie, modelo, tipoCon, velocidad);
+						aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
+					    aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+						Tienda.getInstance().insertarComponente(aux);
+						JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+						clean();
+						
 					}
 						
+					if (rdbMotherBoard.isSelected()) {
+						String marca = cbxMarcaMo.getSelectedItem().toString();
+						String modelo = cbxModeloMo.getSelectedItem().toString();
+						String tipoConector = cbxTipoConector.getSelectedItem().toString();
+						String tipoMemoria = cbxTipoMe.getSelectedItem().toString();
+						String conexionesDisco = txtConexAd.getText();
+						aux = new MotherBoard (codigo, marca, precio, serie, modelo, tipoConector, tipoMemoria, conexionesDisco);
+						aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
+					    aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+						Tienda.getInstance().insertarComponente(aux);
+						JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+						clean();
+		
+					}
+					
+					
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -433,6 +486,8 @@ public class RegistroComp extends JDialog {
 		updateCodigo();
 		txtSerie.setText("");
 		spnPrecio.setValue(new Float(1));
+		spnDispMin.setValue(new Integer (1));
+		spnDispReal.setValue(new Integer (1));
 	}
 	
 }

@@ -3,13 +3,13 @@ package logico;
 public class DiscoDuro extends Componente {
 
 	private String modelo;
-	private int capacidad;
+	private String capacidad;
 	private String tipoConexion;
 	
 	
-	public DiscoDuro(String marca, float precio, int disponibles, int serie, String modelo, int capacidad,
+	public DiscoDuro(String codigo, String marca, float precio, String serie, String modelo, String capacidad,
 			String tipoConexion) {
-		super(marca, precio, serie);
+		super(codigo, marca, precio, serie);
 		this.modelo = modelo;
 		this.capacidad = capacidad;
 		this.tipoConexion = tipoConexion;
@@ -26,12 +26,12 @@ public class DiscoDuro extends Componente {
 	}
 
 
-	public int getCapacidad() {
+	public String getCapacidad() {
 		return capacidad;
 	}
 
 
-	public void setCapacidad(int capacidad) {
+	public void setCapacidad(String capacidad) {
 		this.capacidad = capacidad;
 	}
 

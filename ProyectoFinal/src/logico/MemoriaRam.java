@@ -2,20 +2,20 @@ package logico;
 
 public class MemoriaRam extends Componente {
 
-	private int memoria;
+	private String memoria;
 	private String tipo;
 	
-	public MemoriaRam(String marca, float precio, int disponibles, int serie, int memoria, String tipo) {
-		super(marca, precio, serie);
+	public MemoriaRam(String codigo, String marca, float precio, String serie, String memoria, String tipo) {
+		super(codigo, marca, precio, serie);
 		this.memoria = memoria;
 		this.tipo = tipo;
 	}
 
-	public int getMemoria() {
+	public String getMemoria() {
 		return memoria;
 	}
 
-	public void setMemoria(int memoria) {
+	public void setMemoria(String memoria) {
 		this.memoria = memoria;
 	}
 
