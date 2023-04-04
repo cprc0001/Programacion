@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -9,10 +10,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
+	private Dimension dim;
 
 	/**
 	 * Launch the application.
@@ -34,9 +38,12 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
-		setTitle("MenÃº Principal - CheyleTech Corporation");
+		setTitle("Sistema de CheyleTech Corporation - Menú Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setBounds(100, 100, 450, 300);
+		dim = getToolkit().getScreenSize();
+		setSize(dim.width, dim.height-50);
+		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -44,13 +51,41 @@ public class Principal extends JFrame {
 		JMenu mnComponentes = new JMenu("Componentes");
 		menuBar.add(mnComponentes);
 		
-		JMenuItem mntmListadoDeComponentes = new JMenuItem("Componentes disponibles");
+		JMenuItem mntmNewMenuItem = new JMenuItem("Registrar Componentes");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistroComp regComp = new RegistroComp();
+				regComp.setModal(true);
+				regComp.setVisible(true);
+			}
+		});
+		mnComponentes.add(mntmNewMenuItem);
+		
+		JMenuItem mntmListadoDeComponentes = new JMenuItem("Listado de Componentes");
+		mntmListadoDeComponentes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListadoComp listComp = new ListadoComp();
+				listComp.setModal(true);
+				listComp.setVisible(true);
+			}
+		});
 		mnComponentes.add(mntmListadoDeComponentes);
 		
 		JMenu mnCombos = new JMenu("Combos");
 		menuBar.add(mnCombos);
 		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Registrar Combo");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnCombos.add(mntmNewMenuItem_1);
+		
 		JMenuItem mntListaDeCombos = new JMenuItem("Combos disponibles");
+		mntListaDeCombos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		mnCombos.add(mntListaDeCombos);
 		
 		JMenu mnClientes = new JMenu("Clientes");
@@ -79,12 +114,6 @@ public class Principal extends JFrame {
 		
 		JMenuItem mntmReporteDeVentas = new JMenuItem("Reporte de Ventas");
 		mnAdministrativo.add(mntmReporteDeVentas);
-		
-		JMenuItem mntmRegistrarComponentes = new JMenuItem("Registrar Componentes");
-		mnAdministrativo.add(mntmRegistrarComponentes);
-		
-		JMenuItem mntmRegistrarCombos = new JMenuItem("Registrar Combos");
-		mnAdministrativo.add(mntmRegistrarCombos);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

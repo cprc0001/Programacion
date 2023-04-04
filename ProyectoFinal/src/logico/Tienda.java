@@ -99,8 +99,18 @@ public class Tienda {
 		
 	}
 	
-	public void ModificarCliente(Cliente cliente) { //parametro nuevo añadido
+	public void ModificarCliente(Cliente cliente) { 
 	
+	}
+
+	public Cliente EncontrarCliente(String cedula) {
+		Cliente aux= null;
+		for (Cliente cliente : getMisClientes()) {
+			if (cliente.getCedula().equalsIgnoreCase(cedula)) {
+				aux = cliente ;
+			}
+		}
+		return aux;
 	}
 	
 	

@@ -64,7 +64,7 @@ public class ListaClientes extends JDialog {
 			JScrollPane scrollPane = new JScrollPane();
 			panel.add(scrollPane, BorderLayout.CENTER);
 			{
-				String[] headers = {"C√©dula","Nombre","Tel√©fono","Direcci√≥n"};
+				String[] headers = {"CÈdula","Nombre","TelÈfono","DirecciÛn"};
 
 				table = new JTable();
 				table.addMouseListener(new MouseAdapter() {
@@ -74,7 +74,7 @@ public class ListaClientes extends JDialog {
 						if(index>=0){
 							btnModificar.setEnabled(true);
 							String cedula = table.getValueAt(index, 0).toString();
-							selected =  EncontrarCliente(cedula);
+							selected =  Tienda.getInstance().EncontrarCliente(cedula);
 						}
 					}
 					
@@ -93,11 +93,11 @@ public class ListaClientes extends JDialog {
 				buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 				getContentPane().add(buttonPane, BorderLayout.SOUTH);
 
-				JButton btnModificar = new JButton("Modificar");
+				btnModificar = new JButton("Modificar");
 				btnModificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 
-						ModificarCliente modCliente = new ModificarCliente(); //remov√≠ el argumento "selected" porque me daba error
+						ModificarCliente modCliente = new ModificarCliente(selected); 
 						modCliente.setModal(true);
 						modCliente.setVisible(true);
 						btnModificar.setEnabled(false);
@@ -119,15 +119,7 @@ public class ListaClientes extends JDialog {
 			loadClientes();
 		}
 
-		protected Cliente EncontrarCliente(String cedula) {
-			Cliente aux = null;
-			for (Cliente cliente : Tienda.getInstance().getMisClientes()) {
-				if (cliente.getCedula().equalsIgnoreCase(cedula)) {
-					aux = cliente ;
-				}
-			}
-			return aux;
-		}
+		
 
 		public static void loadClientes () {
 			model.setRowCount(0);

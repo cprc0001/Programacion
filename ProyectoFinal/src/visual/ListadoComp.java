@@ -97,7 +97,7 @@ public class ListadoComp extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String[] headers = {"Código","Tipo", "Marca","Precio", "Disponibles"};
+					String[] headers = {"Código","Tipo", "Precio", "Disponibles"};
 
 					table = new JTable();
 					table.addMouseListener(new MouseAdapter() {
@@ -145,7 +145,7 @@ public class ListadoComp extends JDialog {
 					}
 				});
 				{
-					JButton btnVer = new JButton("Ver Detalles");
+					btnVer = new JButton("Ver Detalles");
 					btnVer.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							if (selected!=null) {
