@@ -58,7 +58,7 @@ public class ListadoComb extends JDialog {
 	 * Create the dialog.
 	 */
 	public ListadoComb() {
-		setTitle("Listado de Componentes");
+		setTitle("Listado de Combos");
 		setBounds(100, 100, 581, 345);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
@@ -83,7 +83,7 @@ public class ListadoComb extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String[] headers = {"Código","Nombre de Combo", "Precio"};
+					String[] headers = {"Codigo","Nombre de Combo", "Precio"};
 
 					table = new JTable();
 					table.addMouseListener(new MouseAdapter() {
@@ -118,7 +118,7 @@ public class ListadoComb extends JDialog {
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if (selected!=null) {
-							int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el Componente con código: "+selected.getCodigo(), "Eliminar Componente", JOptionPane.OK_CANCEL_OPTION);
+							int option = JOptionPane.showConfirmDialog(null, "Estï¿½ seguro que desea eliminar el Componente con cï¿½digo: "+selected.getCodigo(), "Eliminar Componente", JOptionPane.OK_CANCEL_OPTION);
 							if(option == JOptionPane.OK_OPTION){
 								Tienda.getInstance().EliminarCombo(selected);
 								loadComponentes();

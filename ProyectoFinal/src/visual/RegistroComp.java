@@ -82,7 +82,7 @@ public class RegistroComp extends JDialog {
 	 */
 	public RegistroComp() {
 		setTitle ("Registro de Componentes");
-		setBounds(100, 100, 429, 530);
+		setBounds(100, 100, 423, 505);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());

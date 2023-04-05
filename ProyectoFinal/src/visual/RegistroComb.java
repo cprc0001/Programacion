@@ -28,6 +28,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.UIManager;
+import java.awt.Color;
 
 public class RegistroComb extends JDialog {
 
@@ -47,7 +49,7 @@ public class RegistroComb extends JDialog {
 	private float totalD=0;
 	private float auxF=0;
 	private DecimalFormat df = new DecimalFormat("0.00");
-	private String titulo = ("C�digo // Marca // Precio");
+	private String titulo = ("Codigo // Marca // Precio");
 	private JTextField textTotalR;
 	private JTextField textTotalD;
 
@@ -69,7 +71,7 @@ public class RegistroComb extends JDialog {
 	 */
 	public RegistroComb() {
 		setTitle ("Registro de Combos");
-		setBounds(100, 100, 568, 553);
+		setBounds(100, 100, 560, 523);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setLayout(new FlowLayout());
@@ -78,42 +80,42 @@ public class RegistroComb extends JDialog {
 		contentPanel.setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel.setBorder(new TitledBorder(UIManager.getBorder("TitledBorder.border"), "Informaci\u00F3n General:", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		panel.setBounds(10, 11, 525, 100);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 
 		JLabel lblCodigo = new JLabel("Codigo:");
-		lblCodigo.setBounds(345, 13, 74, 18);
+		lblCodigo.setBounds(362, 29, 54, 18);
 		panel.add(lblCodigo);
 
 		txtCodigo = new JTextField();
 		txtCodigo.setEditable(false);
-		txtCodigo.setBounds(414, 10, 96, 23);
+		txtCodigo.setBounds(419, 27, 96, 23);
 		panel.add(txtCodigo);
 		txtCodigo.setColumns(10);
 		txtCodigo.setText("CMB-"+Tienda.getInstance().codComb);
 
 		JLabel lblNombre = new JLabel("Nombre del Combo:");
-		lblNombre.setBounds(15, 17, 145, 14);
+		lblNombre.setBounds(10, 31, 139, 14);
 		panel.add(lblNombre);
 
 		txtNombreComb = new JTextField();
-		txtNombreComb.setBounds(164, 12, 145, 23);
+		txtNombreComb.setBounds(129, 27, 145, 23);
 		panel.add(txtNombreComb);
 		txtNombreComb.setColumns(10);
 		
 				JLabel lblDescuento = new JLabel("Descuento:");
-				lblDescuento.setBounds(67, 68, 82, 18);
+				lblDescuento.setBounds(57, 63, 101, 18);
 				panel.add(lblDescuento);
 				
 						spnDesc = new JSpinner();
-						spnDesc.setBounds(164, 65, 145, 23);
+						spnDesc.setBounds(129, 61, 145, 23);
 						panel.add(spnDesc);
 						spnDesc.setModel(new SpinnerNumberModel(new Float(1), new Float(0), new Float(100), new Float(1)));
 						
 						JButton btnActualizar = new JButton("Actualizar");
-						btnActualizar.setBounds(345, 57, 126, 29);
+						btnActualizar.setBounds(389, 63, 126, 29);
 						panel.add(btnActualizar);
 						btnActualizar.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
@@ -235,7 +237,7 @@ public class RegistroComb extends JDialog {
 		panel2.setLayout(null);
 
 		JLabel lblTotal = new JLabel("Valor Real:");
-		lblTotal.setBounds(317, 16, 78, 20);
+		lblTotal.setBounds(329, 16, 69, 20);
 		panel2.add(lblTotal);
 
 		textTotalR = new JTextField();

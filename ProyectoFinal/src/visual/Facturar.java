@@ -29,6 +29,7 @@ import logico.Factura;
 import logico.Tienda;
 import javax.swing.ListModel;
 import javax.swing.JRadioButton;
+import java.awt.Font;
 
 public class Facturar extends JDialog {
 
@@ -52,7 +53,7 @@ public class Facturar extends JDialog {
 	private float total=0;
 	private Cliente client= null;
 	private DecimalFormat df = new DecimalFormat("0.00");
-	private String titulo = ("C�digo // Especificacion // Precio");
+	private String titulo = ("Codigo // Especificacion // Precio");
 	private JTextField txtCodigoF;
 	/**
 	 * Launch the application.
@@ -72,7 +73,7 @@ public class Facturar extends JDialog {
 	 */
 	public Facturar() {
 		setTitle("Generar Factura");
-		setBounds(100, 100, 522, 503);
+		setBounds(100, 100, 522, 520);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -81,7 +82,7 @@ public class Facturar extends JDialog {
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 11, 486, 122);
+		panel.setBounds(10, 50, 486, 122);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 
@@ -145,20 +146,9 @@ public class Facturar extends JDialog {
 		panel.add(txtDireccion);
 		txtDireccion.setColumns(10);
 
-		txtCodigoF = new JTextField();
-		txtCodigoF.setEditable(false);
-		txtCodigoF.setColumns(10);
-		txtCodigoF.setBounds(366, 5, 110, 23);
-		panel.add(txtCodigoF);
-		txtCodigoF.setText("FAC-"+Tienda.getInstance().codF);
-
-		JLabel lblCodigo = new JLabel("No.");
-		lblCodigo.setBounds(334, 8, 25, 20);
-		panel.add(lblCodigo);
-
 		JPanel panel_1 = new JPanel();
 		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(10, 139, 486, 219);
+		panel_1.setBounds(10, 183, 486, 219);
 		contentPanel.add(panel_1);
 		panel_1.setLayout(null);
 
@@ -274,14 +264,30 @@ public class Facturar extends JDialog {
 		panel_1.add(lblCarritoDeCompra);
 
 		JLabel lblTotal = new JLabel("Total:");
-		lblTotal.setBounds(311, 369, 46, 14);
+		lblTotal.setBounds(309, 416, 46, 14);
 		contentPanel.add(lblTotal);
 
 		txtTotal = new JTextField();
 		txtTotal.setEditable(false);
-		txtTotal.setBounds(354, 366, 130, 20);
+		txtTotal.setBounds(355, 413, 130, 20);
 		contentPanel.add(txtTotal);
 		txtTotal.setColumns(10);
+		
+		JLabel lblNombreEmpresa = new JLabel("CHEYLETECH CORPORATION SRL");
+		lblNombreEmpresa.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNombreEmpresa.setBounds(10, 15, 247, 24);
+		contentPanel.add(lblNombreEmpresa);
+		
+				txtCodigoF = new JTextField();
+				txtCodigoF.setText("FACT-1");
+				txtCodigoF.setBounds(375, 18, 110, 23);
+				contentPanel.add(txtCodigoF);
+				txtCodigoF.setEditable(false);
+				txtCodigoF.setColumns(10);
+				
+						JLabel lblCodigo = new JLabel("Código único:");
+						lblCodigo.setBounds(293, 19, 86, 20);
+						contentPanel.add(lblCodigo);
 
 
 		{
