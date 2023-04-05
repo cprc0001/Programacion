@@ -112,6 +112,21 @@ public class Tienda {
 		}
 		return aux;
 	}
+
+	public Combo EncontrarCombo(String codigo) {
+		Combo aux = null;
+		for (Combo combo : misCombos) {
+			if (combo.getCodigo().equalsIgnoreCase(codigo)) {
+				aux = combo;
+			}
+		}
+		return aux;
+	}
+
+	public void EliminarCombo(Combo selected) {
+		misCombos.remove(selected);
+		
+	}
 	
 	
 	

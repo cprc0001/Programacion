@@ -77,6 +77,9 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Registrar Combo");
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				RegistroComb regComb = new RegistroComb();
+				regComb.setModal(true);
+				regComb.setVisible(true);
 			}
 		});
 		mnCombos.add(mntmNewMenuItem_1);
@@ -84,6 +87,10 @@ public class Principal extends JFrame {
 		JMenuItem mntListaDeCombos = new JMenuItem("Combos disponibles");
 		mntListaDeCombos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				ListadoComb listComb = new ListadoComb();
+				listComb.setModal(true);
+				listComb.setVisible(true);
 			}
 		});
 		mnCombos.add(mntListaDeCombos);
