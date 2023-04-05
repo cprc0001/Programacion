@@ -53,11 +53,11 @@ public class Factura {
    public float PrecioFactura() {
 	float precio=0;
 	   for (Combo combo : misCombos) {
-		   
+		   precio += combo.getTotalD();
 	   }
 	   
 	   for (Componente componente :misComponentes) {
-		   precio += componente.precio;
+		   precio += componente.getPrecio();
 	   }
 	
 	   return precio;

@@ -92,11 +92,6 @@ public class ListaFacturas extends JDialog {
 		loadFacturas();
 	}
 
-	//Aún no se quiere actualizar la lista de facturas, algo me dice que el problema proviene de
-	//algo interno de alguno de los parámetros declarados en las rows o algo asi no se
-	
-	//Me he guiado de la clase de ListadoFacturas de tu tarea 2 y ya revisé que no faltara nada, así que por el momento no me percato de que pasa
-	
 	
 	private void loadFacturas () {
 		model.setRowCount(0);
@@ -104,7 +99,7 @@ public class ListaFacturas extends JDialog {
 		for (Factura aux : Tienda.getInstance().getMisFacturas()) {
 			rows[0] = aux.getCodigo();
 			rows[1] = aux.getCliente().getNombre();
-			rows[2] = aux.getMisComponentes();
+			rows[2] = aux.getMisComponentes().size()+aux.getMisCombos().size();
 			rows[3] = df.format(aux.PrecioFactura());
 			model.addRow(rows);
 		}
