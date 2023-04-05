@@ -72,7 +72,7 @@ public class ListadoComp extends JDialog {
 			contentPanel.add(panel, BorderLayout.NORTH);
 			panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 15));
 			{
-				JLabel lblTipoDeQueso = new JLabel("Tipo de Queso:");
+				JLabel lblTipoDeQueso = new JLabel("Tipo de Componentes:");
 				lblTipoDeQueso.setHorizontalAlignment(SwingConstants.LEFT);
 				panel.add(lblTipoDeQueso);
 			}
@@ -97,7 +97,7 @@ public class ListadoComp extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String[] headers = {"Código","Tipo", "Precio", "Disponibles"};
+					String[] headers = {"Codigo","Tipo", "Precio", "Disponibles"};
 
 					table = new JTable();
 					table.addMouseListener(new MouseAdapter() {
@@ -132,7 +132,7 @@ public class ListadoComp extends JDialog {
 				btnEliminar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						if (selected!=null) {
-							int option = JOptionPane.showConfirmDialog(null, "Está seguro que desea eliminar el Componente con código: "+selected.getCodigo(), "Eliminar Componente", JOptionPane.OK_CANCEL_OPTION);
+							int option = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el Componente con codigo: "+selected.getCodigo(), "Eliminar Componente", JOptionPane.OK_CANCEL_OPTION);
 							if(option == JOptionPane.OK_OPTION){
 								Tienda.getInstance().EliminarComponente(selected);
 								loadComponentes(0);

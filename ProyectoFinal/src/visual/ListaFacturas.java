@@ -60,7 +60,7 @@ public class ListaFacturas extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String[] headers = {"Cédula","Cliente","Cantidad de componentes","Total"}; //Aún no sé si solo se definirá esto en la lista o serán más cosas
+					String[] headers = {"Cedula","Cliente","Cantidad de componentes","Total"}; //Aún no sé si solo se definirá esto en la lista o serán más cosas
 
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

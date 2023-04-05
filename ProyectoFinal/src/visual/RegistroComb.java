@@ -47,7 +47,7 @@ public class RegistroComb extends JDialog {
 	private float totalD=0;
 	private float auxF=0;
 	private DecimalFormat df = new DecimalFormat("0.00");
-	private String titulo = ("Código // Marca // Precio");
+	private String titulo = ("Cï¿½digo // Marca // Precio");
 	private JTextField textTotalR;
 	private JTextField textTotalD;
 
@@ -303,7 +303,12 @@ public class RegistroComb extends JDialog {
 					getRootPane().setDefaultButton(okButton);
 				}
 				{
-					JButton cancelButton = new JButton("Cancel");
+					JButton cancelButton = new JButton("Cancelar");
+					cancelButton.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent e) {
+							dispose();
+						}
+					});
 					cancelButton.setActionCommand("Cancel");
 					buttonPane1.add(cancelButton);
 				}
