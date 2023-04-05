@@ -38,7 +38,7 @@ public class Principal extends JFrame {
 	 * Create the frame.
 	 */
 	public Principal() {
-		setTitle("Sistema de CheyleTech Corporation - Men� Principal");
+		setTitle("Sistema de CheyleTech Corporation - Menu Principal");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		dim = getToolkit().getScreenSize();
@@ -124,6 +124,15 @@ public class Principal extends JFrame {
 		mnVentas.add(mntmFacturar);
 		
 		JMenuItem mntmListadoDeFacturas = new JMenuItem("Listado de Facturas");
+		mntmListadoDeFacturas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ListaFacturas listFacturas = new ListaFacturas();
+				listFacturas.setModal(true);
+				listFacturas.setVisible(true);
+				  
+			}
+		});
 		mnVentas.add(mntmListadoDeFacturas);
 		
 		JMenu mnAdministrativo = new JMenu("Administración");

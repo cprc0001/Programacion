@@ -24,9 +24,9 @@ public class ListaFacturas extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTable table;
-	private DefaultTableModel model;
-	private Object rows[];
-	//private DecimalFormat df = new DecimalFormat("0.00");
+	private static DefaultTableModel model;
+	private static Object rows[];
+	private DecimalFormat df = new DecimalFormat("0.00");
 
 	/**
 	 * Launch the application.
@@ -98,8 +98,8 @@ public class ListaFacturas extends JDialog {
 		for (Factura aux : Tienda.getInstance().getMisFacturas()) {
 			rows[0] = aux.getCodigo();
 			rows[1] = aux.getCliente().getNombre();
-			//rows[3] = df.format(aux.PrecioFactura());
-			//rows[2] = aux.CantComponentes();
+			rows[2] = aux.getMisComponentes();
+			rows[3] = df.format(aux.PrecioFactura());
 			model.addRow(rows);
 		}
 
