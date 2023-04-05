@@ -47,6 +47,7 @@ public class ListaFacturas extends JDialog {
 	public ListaFacturas() {
 		setTitle("Listado de Facturas");
 		setBounds(100, 100, 677, 330);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -60,7 +61,7 @@ public class ListaFacturas extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String[] headers = {"Cedula","Cliente","Cantidad de componentes","Total"}; //Aún no sé si solo se definirá esto en la lista o serán más cosas
+					String[] headers = {"Codigo","Cliente","Cantidad de componentes","Total"}; 
 
 					table = new JTable();
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -74,6 +75,7 @@ public class ListaFacturas extends JDialog {
 		}
 		{
 			JPanel buttonPane = new JPanel();
+			buttonPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
@@ -90,7 +92,11 @@ public class ListaFacturas extends JDialog {
 		loadFacturas();
 	}
 
-	//Aún se debe modificar esto, por eso lo comenté, lo planteé para avanzar un poco
+	//Aún no se quiere actualizar la lista de facturas, algo me dice que el problema proviene de
+	//algo interno de alguno de los parámetros declarados en las rows o algo asi no se
+	
+	//Me he guiado de la clase de ListadoFacturas de tu tarea 2 y ya revisé que no faltara nada, así que por el momento no me percato de que pasa
+	
 	
 	private void loadFacturas () {
 		model.setRowCount(0);
