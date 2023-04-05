@@ -64,7 +64,7 @@ public class ListaClientes extends JDialog {
 			JScrollPane scrollPane = new JScrollPane();
 			panel.add(scrollPane, BorderLayout.CENTER);
 			{
-				String[] headers = {"Cédula","Nombre","Teléfono","Dirección"};
+				String[] headers = {"Cedula","Nombre","Telefono","Direccion"};
 
 				table = new JTable();
 				table.addMouseListener(new MouseAdapter() {
