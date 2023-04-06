@@ -148,11 +148,33 @@ public class Principal extends JFrame {
 		JMenu mnAdministrativo = new JMenu("Administracion");
 		menuBar.add(mnAdministrativo);
 		
-		JMenuItem mntmReporteDeClientes = new JMenuItem("Reporte de Clientes");
-		mnAdministrativo.add(mntmReporteDeClientes);
+		JMenu mnNewMenu = new JMenu("Usuarios");
+		mnAdministrativo.add(mnNewMenu);
 		
-		JMenuItem mntmReporteDeComponentes = new JMenuItem("Reporte de Componentes");
-		mnAdministrativo.add(mntmReporteDeComponentes);
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Registrar Usuarios");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Ver Usuarios");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		mnNewMenu.add(mntmNewMenuItem_3);
+		
+		JMenuItem mntmReporteDeClientes = new JMenuItem("Reporte de Clientes");
+		mntmReporteDeClientes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ReporteCliente repC = new ReporteCliente();
+				repC.setModal(true);
+				repC.setVisible(true);
+				
+			}
+		});
+		mnAdministrativo.add(mntmReporteDeClientes);
 		
 		JMenuItem mntmReporteDeVentas = new JMenuItem("Reporte de Ventas");
 		mnAdministrativo.add(mntmReporteDeVentas);

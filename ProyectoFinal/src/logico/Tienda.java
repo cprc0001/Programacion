@@ -3,18 +3,21 @@ package logico;
 import java.util.ArrayList;
 
 
+
 public class Tienda {
 
 	private ArrayList<Cliente> misClientes;
 	private ArrayList<Combo> misCombos;
 	private ArrayList<Componente> misComponentes;
 	private ArrayList<Factura> misFacturas;
+	private ArrayList<User> misUsers;
+	private static User loginUser;
+	private static final long serialVersionUID = 1L;
 	public static Tienda tienda = null;
 	public static int codComb = 1;
 	public static int codF= 1;
 	public static int codComp = 1;
 
-	
 	
 	public Tienda() {
 		super();
@@ -22,6 +25,7 @@ public class Tienda {
 		misCombos = new ArrayList<>();
 		misComponentes = new ArrayList<>();
 		misFacturas = new ArrayList<>();
+		misUsers = new ArrayList<>();
 		
 	}
 	
@@ -34,6 +38,30 @@ public class Tienda {
 
 	public ArrayList<Cliente> getMisClientes() {
 		return misClientes;
+	}
+
+	public ArrayList<User> getMisUsers() {
+		return misUsers;
+	}
+
+	public void setMisUsers(ArrayList<User> misUsers) {
+		this.misUsers = misUsers;
+	}
+
+	public static User getLoginUser() {
+		return loginUser;
+	}
+
+	public static void setLoginUser(User loginUser) {
+		Tienda.loginUser = loginUser;
+	}
+
+	public static Tienda getTienda() {
+		return tienda;
+	}
+
+	public static void setTienda(Tienda tienda) {
+		Tienda.tienda = tienda;
 	}
 
 	public void setMisClientes(ArrayList<Cliente> misClientes) {
