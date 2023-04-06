@@ -251,28 +251,30 @@ public class Facturar extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				if (selectedComp2!=null) {
 					total-= selectedComp2.getPrecio();
-					model2.remove(lst_Compra.getSelectedIndex());
 					txtTotal.setText(""+df.format(total));
 					selectedComp2.setDisponibles(selectedComp2.getDisponibles()+1);
+					model2.remove(lst_Compra.getSelectedIndex());
 					if (selectedComp2.getDisponibles()>selectedComp2.getDispMin()) {
 						selectedComp2.setEstado('D');
-					} else if (selectedComp2.getDisponibles()< selectedComp2.getDispMin() && selectedComp2.getDisponibles()!=0) {
+					} else if (selectedComp2.getDisponibles()<= selectedComp2.getDispMin() && selectedComp2.getDisponibles()>0) {
 						selectedComp2.setEstado('P');
 					}
 				} else if (selectedComb2!=null) {
 					total-= selectedComb2.getTotalD();
+					model2.remove(lst_Compra.getSelectedIndex());
 					for (Componente comp : selectedComb2.getMisComponentes()) {
 						comp.setDisponibles(comp.getDisponibles()+1);
 						if (comp.getDisponibles()>comp.getDispMin()) {
 							comp.setEstado('D');
-						} else if (comp.getDisponibles()< comp.getDispMin() && comp.getDisponibles()!=0) {
+						} else if (comp.getDisponibles()<= comp.getDispMin() && comp.getDisponibles()>0) {
 							comp.setEstado('P');
 						}
 					}
-
+					
 					txtTotal.setText(""+df.format(total));
 
 				}
+				
 				loadList1();
 				selectedComp2=null;
 				selectedComb2=null;
@@ -406,14 +408,17 @@ public class Facturar extends JDialog {
 				model.addElement(comp.getCodigo()+" // "+comp.getMarca()+" // "+"$"+df.format(comp.getPrecio()));
 			}
 		}
-
+        int y= 0;
 		for (Combo comb: Tienda.getInstance().getMisCombos()) {
 			for (Componente comp : comb.getMisComponentes()) {
-				if (Character.compare(comp.getEstado(), a)!=0) {
-					model.addElement(comb.getCodigo()+" // "+"Combo: "+comb.getNombreComb()+" // "+"$"+df.format(comb.getTotalD()));
-				}
+				if (Character.compare(comp.getEstado(), a)==0) {
+					y++;
+					}
 			}
-		}
+			if (y==0) {
+			model.addElement(comb.getCodigo()+" // "+"Combo: "+comb.getNombreComb()+" // "+"$"+df.format(comb.getTotalD()));
+			}
+		} 
 
 	}
 

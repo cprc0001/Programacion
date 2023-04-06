@@ -456,16 +456,16 @@ public class RegistroComp extends JDialog {
 
 						if (rdbMemoriaRam.isSelected()) {
 							if (cbxMarcaMe.getSelectedIndex()>0 && cbxCapacidad.getSelectedIndex()>0 && cbxTipoMemoria.getSelectedIndex()>0 && !(txtSerie.getText().equalsIgnoreCase(""))) {
-								
-							String marca = cbxMarcaMe.getSelectedItem().toString();
-							String memoria = cbxCapacidad.getSelectedItem().toString();
-							String tipoMe = cbxTipoMemoria.getSelectedItem().toString();
-							aux = new MemoriaRam (codigo, marca, precio, serie, memoria, tipoMe);
-							aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
-							aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
-							Tienda.getInstance().insertarComponente(aux);
-							JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-							clean();
+
+								String marca = cbxMarcaMe.getSelectedItem().toString();
+								String memoria = cbxCapacidad.getSelectedItem().toString();
+								String tipoMe = cbxTipoMemoria.getSelectedItem().toString();
+								aux = new MemoriaRam (codigo, marca, precio, serie, memoria, tipoMe);
+								aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
+								aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+								Tienda.getInstance().insertarComponente(aux);
+								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								clean();
 							} else {
 								JOptionPane.showMessageDialog(null, "Debe de rellenar todos los campos", "ERROR", JOptionPane.INFORMATION_MESSAGE);	
 							}
@@ -473,37 +473,37 @@ public class RegistroComp extends JDialog {
 
 						if (rdbMicroprocesador.isSelected()) {
 							if (cbxMarcaMi.getSelectedIndex()>0 && cbxModeloMi.getSelectedIndex()>0 &&  cbxConexionMi.getSelectedIndex()>0 && cbxVelocidad.getSelectedIndex()>0 && !(txtSerie.getText().equalsIgnoreCase(""))) {
-								
-							String marca = cbxMarcaMi.getSelectedItem().toString();
-							String modelo = cbxModeloMi.getSelectedItem().toString();
-							String tipoCon = cbxConexionMi.getSelectedItem().toString();
-							String velocidad = cbxVelocidad.getSelectedItem().toString();
-							aux = new Microprocesador (codigo, marca, precio, serie, modelo, tipoCon, velocidad);
-							aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
-							aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
-							Tienda.getInstance().insertarComponente(aux);
-							JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-							clean();
-						} else {
-							JOptionPane.showMessageDialog(null, "Debe de rellenar todos los campos", "ERROR", JOptionPane.INFORMATION_MESSAGE);	
-						}
+
+								String marca = cbxMarcaMi.getSelectedItem().toString();
+								String modelo = cbxModeloMi.getSelectedItem().toString();
+								String tipoCon = cbxConexionMi.getSelectedItem().toString();
+								String velocidad = cbxVelocidad.getSelectedItem().toString();
+								aux = new Microprocesador (codigo, marca, precio, serie, modelo, tipoCon, velocidad);
+								aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
+								aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+								Tienda.getInstance().insertarComponente(aux);
+								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								clean();
+							} else {
+								JOptionPane.showMessageDialog(null, "Debe de rellenar todos los campos", "ERROR", JOptionPane.INFORMATION_MESSAGE);	
+							}
 
 						}
 
 						if (rdbMotherBoard.isSelected()) {
 							if (cbxMarcaMo.getSelectedIndex()>0 && cbxModeloMo.getSelectedIndex()>0 &&  cbxTipoConector.getSelectedIndex()>0 && cbxTipoMe.getSelectedIndex()>0 && !(txtConexAd.getText().equalsIgnoreCase("")) && !(txtSerie.getText().equalsIgnoreCase(""))) {
-								
-							String marca = cbxMarcaMo.getSelectedItem().toString();
-							String modelo = cbxModeloMo.getSelectedItem().toString();
-							String tipoConector = cbxTipoConector.getSelectedItem().toString();
-							String tipoMemoria = cbxTipoMe.getSelectedItem().toString();
-							String conexionesDisco = txtConexAd.getText();
-							aux = new MotherBoard (codigo, marca, precio, serie, modelo, tipoConector, tipoMemoria, conexionesDisco);
-							aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
-							aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
-							Tienda.getInstance().insertarComponente(aux);
-							JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
-							clean();
+
+								String marca = cbxMarcaMo.getSelectedItem().toString();
+								String modelo = cbxModeloMo.getSelectedItem().toString();
+								String tipoConector = cbxTipoConector.getSelectedItem().toString();
+								String tipoMemoria = cbxTipoMe.getSelectedItem().toString();
+								String conexionesDisco = txtConexAd.getText();
+								aux = new MotherBoard (codigo, marca, precio, serie, modelo, tipoConector, tipoMemoria, conexionesDisco);
+								aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
+								aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+								Tienda.getInstance().insertarComponente(aux);
+								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
+								clean();
 							} else {
 								JOptionPane.showMessageDialog(null, "Debe de rellenar todos los campos", "ERROR", JOptionPane.INFORMATION_MESSAGE);	
 							}
