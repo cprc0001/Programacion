@@ -72,9 +72,9 @@ public class ListadoComp extends JDialog {
 			contentPanel.add(panel, BorderLayout.NORTH);
 			panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 15));
 			{
-				JLabel lblTipoDeQueso = new JLabel("Tipo de Componentes:");
-				lblTipoDeQueso.setHorizontalAlignment(SwingConstants.LEFT);
-				panel.add(lblTipoDeQueso);
+				JLabel lblTipoComp = new JLabel("Tipo de Componentes:");
+				lblTipoComp.setHorizontalAlignment(SwingConstants.LEFT);
+				panel.add(lblTipoComp);
 			}
 			{
 				comboBox = new JComboBox();
@@ -97,7 +97,7 @@ public class ListadoComp extends JDialog {
 				JScrollPane scrollPane = new JScrollPane();
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
-					String[] headers = {"Codigo","Tipo", "Precio", "Disponibles"};
+					String[] headers = {"Codigo","Tipo", "Precio", "Disponibles", "Estado"};
 
 					table = new JTable();
 					table.addMouseListener(new MouseAdapter() {
@@ -182,6 +182,7 @@ public class ListadoComp extends JDialog {
 				rows[0] = aux.getCodigo();
 				rows[2] = df.format(aux.getPrecio());
 				rows[3] = aux.getDisponibles();
+				rows[4] = aux.getEstado();
 				if(aux instanceof DiscoDuro){
 					rows[1] = "Disco Duro";	
 				}
@@ -206,6 +207,7 @@ public class ListadoComp extends JDialog {
 					rows[1] = "Disco Duro";	
 					rows[2] = df.format(aux.getPrecio());
 					rows[3] = aux.getDisponibles();
+					rows[4] = aux.getEstado();
 					model.addRow(rows);
 				}
 			}	
@@ -217,6 +219,7 @@ public class ListadoComp extends JDialog {
 					rows[1] = "Memoria RAM";
 					rows[2] = df.format(aux.getPrecio());
 					rows[3] = aux.getDisponibles();
+					rows[4] = aux.getEstado();
 					model.addRow(rows);
 				}
 			}	
@@ -228,6 +231,7 @@ public class ListadoComp extends JDialog {
 					rows[1] = "Microprocesador";
 					rows[2] = df.format(aux.getPrecio());
 					rows[3] = aux.getDisponibles();
+					rows[4] = aux.getEstado();
 					model.addRow(rows);
 				}
 			}	
@@ -240,6 +244,7 @@ public class ListadoComp extends JDialog {
 					rows[1] = "Mother Board";
 					rows[2] = df.format(aux.getPrecio());
 					rows[3] = aux.getDisponibles();
+					rows[4] = aux.getEstado();
 					model.addRow(rows);
 				}
 			}	

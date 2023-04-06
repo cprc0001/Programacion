@@ -71,6 +71,16 @@ public class Principal extends JFrame {
 		});
 		mnComponentes.add(mntmListadoDeComponentes);
 		
+		JMenuItem mntmPedirComp = new JMenuItem("Lista Pedir Componentes");
+		mntmPedirComp.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ListPedidos listP = new ListPedidos();
+				listP.setModal(true);
+				listP.setVisible(true);
+			}
+		});
+		mnComponentes.add(mntmPedirComp);
+		
 		JMenu mnCombos = new JMenu("Combos");
 		menuBar.add(mnCombos);
 		
@@ -135,7 +145,7 @@ public class Principal extends JFrame {
 		});
 		mnVentas.add(mntmListadoDeFacturas);
 		
-		JMenu mnAdministrativo = new JMenu("Administración");
+		JMenu mnAdministrativo = new JMenu("Administracion");
 		menuBar.add(mnAdministrativo);
 		
 		JMenuItem mntmReporteDeClientes = new JMenuItem("Reporte de Clientes");

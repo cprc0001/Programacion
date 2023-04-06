@@ -217,14 +217,28 @@ public class Facturar extends JDialog {
 				if (selectedComp!=null) {
 					model2.addElement(selectedComp.getCodigo()+" // "+selectedComp.getMarca()+" // "+"$"+df.format(selectedComp.getPrecio()));
 					total+= selectedComp.getPrecio();
-					model.remove(listDisponibles.getSelectedIndex());
+					selectedComp.setDisponibles(selectedComp.getDisponibles()-1);
+					if (selectedComp.getDisponibles()<=selectedComp.getDispMin() && selectedComp.getDisponibles()> 0) {
+						selectedComp.setEstado('P');
+					} else if (selectedComp.getDisponibles()== 0) {
+						selectedComp.setEstado('N');
+					}
 					txtTotal.setText(""+df.format(total));     
 				} else if ( selectedComb !=null){
 					model2.addElement(selectedComb.getCodigo()+" // "+"Combo:"+selectedComb.getNombreComb()+" // "+"$"+df.format(selectedComb.getTotalD()));
 					total+= selectedComb.getTotalD();
-					model.remove(listDisponibles.getSelectedIndex());
+					for (Componente comp : selectedComb.getMisComponentes()) {
+						comp.setDisponibles(comp.getDisponibles()-1);
+						if (comp.getDisponibles()<=comp.getDispMin()& comp.getDisponibles()> 0) {
+							comp.setEstado('P');
+						} else if (comp.getDisponibles()== 0) {
+							comp.setEstado('N');
+						}
+					}
+					//model.remove(listDisponibles.getSelectedIndex());
 					txtTotal.setText(""+df.format(total));     
 				}
+				loadList1();
 			}
 
 
@@ -236,17 +250,30 @@ public class Facturar extends JDialog {
 		btnIzquierda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (selectedComp2!=null) {
-					model.addElement(selectedComp2.getCodigo()+" // "+selectedComp2.getMarca()+" // "+"$"+df.format(selectedComp2.getPrecio()));
 					total-= selectedComp2.getPrecio();
 					model2.remove(lst_Compra.getSelectedIndex());
 					txtTotal.setText(""+df.format(total));
+					selectedComp2.setDisponibles(selectedComp2.getDisponibles()+1);
+					if (selectedComp2.getDisponibles()>selectedComp2.getDispMin()) {
+						selectedComp2.setEstado('D');
+					} else if (selectedComp2.getDisponibles()< selectedComp2.getDispMin() && selectedComp2.getDisponibles()!=0) {
+						selectedComp2.setEstado('P');
+					}
 				} else if (selectedComb2!=null) {
-					model.addElement(selectedComb2.getCodigo()+" // "+"Combo:"+selectedComb.getNombreComb()+" // "+"$"+df.format(selectedComb2.getTotalD()));
 					total-= selectedComb2.getTotalD();
-					model2.remove(lst_Compra.getSelectedIndex());
+					for (Componente comp : selectedComb2.getMisComponentes()) {
+						comp.setDisponibles(comp.getDisponibles()+1);
+						if (comp.getDisponibles()>comp.getDispMin()) {
+							comp.setEstado('D');
+						} else if (comp.getDisponibles()< comp.getDispMin() && comp.getDisponibles()!=0) {
+							comp.setEstado('P');
+						}
+					}
+
 					txtTotal.setText(""+df.format(total));
 
 				}
+				loadList1();
 				selectedComp2=null;
 				selectedComb2=null;
 
@@ -272,22 +299,22 @@ public class Facturar extends JDialog {
 		txtTotal.setBounds(355, 413, 130, 20);
 		contentPanel.add(txtTotal);
 		txtTotal.setColumns(10);
-		
+
 		JLabel lblNombreEmpresa = new JLabel("CHEYLETECH CORPORATION SRL");
 		lblNombreEmpresa.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNombreEmpresa.setBounds(10, 15, 247, 24);
 		contentPanel.add(lblNombreEmpresa);
-		
-				txtCodigoF = new JTextField();
-				txtCodigoF.setText("FACT-1");
-				txtCodigoF.setBounds(375, 18, 110, 23);
-				contentPanel.add(txtCodigoF);
-				txtCodigoF.setEditable(false);
-				txtCodigoF.setColumns(10);
-				
-						JLabel lblCodigo = new JLabel("Código único:");
-						lblCodigo.setBounds(293, 19, 86, 20);
-						contentPanel.add(lblCodigo);
+
+		txtCodigoF = new JTextField();
+		txtCodigoF.setText("FACT-1");
+		txtCodigoF.setBounds(375, 18, 110, 23);
+		contentPanel.add(txtCodigoF);
+		txtCodigoF.setEditable(false);
+		txtCodigoF.setColumns(10);
+
+		JLabel lblCodigo = new JLabel("Codigo unico:");
+		lblCodigo.setBounds(293, 19, 86, 20);
+		contentPanel.add(lblCodigo);
 
 
 		{
@@ -373,14 +400,19 @@ public class Facturar extends JDialog {
 	private void loadList1() {
 		model.removeAllElements();
 		model.addElement(titulo);
+		char a = 'N';
 		for (Componente comp: Tienda.getInstance().getMisComponentes()) {
-			model.addElement(comp.getCodigo()+" // "+comp.getMarca()+" // "+"$"+df.format(comp.getPrecio()));
-
+			if (Character.compare(comp.getEstado(), a)!=0  ) {
+				model.addElement(comp.getCodigo()+" // "+comp.getMarca()+" // "+"$"+df.format(comp.getPrecio()));
+			}
 		}
 
 		for (Combo comb: Tienda.getInstance().getMisCombos()) {
-			model.addElement(comb.getCodigo()+" // "+"Combo:"+comb.getNombreComb()+" // "+"$"+df.format(comb.getTotalD()));
-
+			for (Componente comp : comb.getMisComponentes()) {
+				if (Character.compare(comp.getEstado(), a)!=0) {
+					model.addElement(comb.getCodigo()+" // "+"Combo: "+comb.getNombreComb()+" // "+"$"+df.format(comb.getTotalD()));
+				}
+			}
 		}
 
 	}

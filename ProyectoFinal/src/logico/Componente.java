@@ -8,6 +8,7 @@ public abstract class Componente {
 	protected int disponibles;
 	protected int dispMin;
 	protected String serie;
+	protected char estado;
 	
 
 	public Componente(String codigo, String marca, float precio, String serie) {
@@ -18,6 +19,7 @@ public abstract class Componente {
 		this.disponibles = 0;
 		this.dispMin = 0;
 		this.serie = serie;
+		this.estado = 'D';
 	}
 
 
@@ -28,6 +30,16 @@ public abstract class Componente {
 
 	public String getCodigo() {
 		return codigo;
+	}
+
+
+	public char getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(char estado) {
+		this.estado = estado;
 	}
 
 
@@ -79,6 +91,7 @@ public abstract class Componente {
 	public void setDispMin(int dispMin) {
 		this.dispMin = dispMin;
 	}
+	
 	
 	
 }
