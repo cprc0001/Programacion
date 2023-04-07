@@ -1,10 +1,11 @@
 package logico;
 
 import java.util.ArrayList;
+import java.io.Serializable;
 
 
 
-public class Tienda {
+public class Tienda implements Serializable {
 
 	private ArrayList<Cliente> misClientes;
 	private ArrayList<Combo> misCombos;
@@ -154,6 +155,21 @@ public class Tienda {
 	public void EliminarCombo(Combo selected) {
 		misCombos.remove(selected);
 		
+	}
+	
+	public void regUser (User user) {
+		misUsers.add(user);
+	}
+	
+	public boolean confirmLogin(String text, String text2) {
+		boolean login = false;
+		for (User user : misUsers) {
+			if (user.getUserName().equals(text)&& user.getPass().equals(text2)) {
+				loginUser = user;
+				login = true;
+			}
+		}
+		return login;
 	}
 	
 	
