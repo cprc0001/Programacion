@@ -309,7 +309,7 @@ public class Facturar extends JDialog {
 
 		txtCodigoF = new JTextField();
 		txtCodigoF.setBounds(375, 18, 110, 23);
-		txtCodigoF.setText("FACT-"+Tienda.codF);
+		txtCodigoF.setText("FACT-"+Tienda.getTienda().codF);
 		contentPanel.add(txtCodigoF);
 		txtCodigoF.setEditable(false);
 		txtCodigoF.setColumns(10);

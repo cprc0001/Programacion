@@ -544,7 +544,7 @@ public class RegistroComp extends JDialog {
 		if(rdbMotherBoard.isSelected()){
 			pre = "MB";	
 		}
-		textcodigo.setText(pre+"-"+Tienda.codComp);
+		textcodigo.setText(pre+"-"+Tienda.getInstance().codComp);
 
 	}
 

@@ -135,7 +135,9 @@ public class ListadoComb extends JDialog {
 					btnVer.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							if (selected!=null) {
-
+								VerCombo verComb = new VerCombo(selected);
+								verComb.setModal(true);
+								verComb.setVisible(true);
 							}
 						}
 					});

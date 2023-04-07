@@ -15,9 +15,9 @@ public class Tienda implements Serializable {
 	private static User loginUser;
 	private static final long serialVersionUID = 1L;
 	public static Tienda tienda = null;
-	public static int codComb = 1;
-	public static int codF= 1;
-	public static int codComp = 1;
+	public int codComb = 1;
+	public int codF= 1;
+	public int codComp = 1;
 
 	
 	public Tienda() {
