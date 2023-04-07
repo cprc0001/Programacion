@@ -27,6 +27,7 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	//Probando solución de error
 	/**
 	 * Launch the application.
 	 */
