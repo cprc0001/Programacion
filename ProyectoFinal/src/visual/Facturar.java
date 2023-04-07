@@ -308,8 +308,8 @@ public class Facturar extends JDialog {
 		contentPanel.add(lblNombreEmpresa);
 
 		txtCodigoF = new JTextField();
-		txtCodigoF.setText("FACT-1");
 		txtCodigoF.setBounds(375, 18, 110, 23);
+		txtCodigoF.setText("FACT-"+Tienda.codF);
 		contentPanel.add(txtCodigoF);
 		txtCodigoF.setEditable(false);
 		txtCodigoF.setColumns(10);
