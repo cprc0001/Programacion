@@ -11,6 +11,7 @@ public abstract class Componente implements Serializable {
 	protected int dispMin;
 	protected String serie;
 	protected char estado;
+	protected int cant;
 	
 
 	public Componente(String codigo, String marca, float precio, String serie) {
@@ -22,6 +23,7 @@ public abstract class Componente implements Serializable {
 		this.dispMin = 0;
 		this.serie = serie;
 		this.estado = 'D';
+		this.cant = 0;
 	}
 
 
@@ -32,6 +34,17 @@ public abstract class Componente implements Serializable {
 
 	public String getCodigo() {
 		return codigo;
+	}
+
+	
+
+	public int getCant() {
+		return cant;
+	}
+
+
+	public void setCant(int cant) {
+		this.cant = cant;
 	}
 
 

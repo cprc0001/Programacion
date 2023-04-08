@@ -449,6 +449,7 @@ public class RegistroComp extends JDialog {
 								if (aux.getDispMin()>=aux.getDisponibles()) {
 									aux.setEstado('P');
 								}
+								aux.setCant(aux.getDisponibles());
 								Tienda.getInstance().insertarComponente(aux);
 								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								clean();
@@ -469,6 +470,7 @@ public class RegistroComp extends JDialog {
 								if (aux.getDispMin()>=aux.getDisponibles()) {
 									aux.setEstado('P');
 								}
+								aux.setCant(aux.getDisponibles());
 								Tienda.getInstance().insertarComponente(aux);
 								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								clean();
@@ -490,6 +492,7 @@ public class RegistroComp extends JDialog {
 								if (aux.getDispMin()>=aux.getDisponibles()) {
 									aux.setEstado('P');
 								}
+								aux.setCant(aux.getDisponibles());
 								Tienda.getInstance().insertarComponente(aux);
 								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								clean();
@@ -513,6 +516,7 @@ public class RegistroComp extends JDialog {
 								if (aux.getDispMin()>=aux.getDisponibles()) {
 									aux.setEstado('P');
 								}
+								aux.setCant(aux.getDisponibles());
 								Tienda.getInstance().insertarComponente(aux);
 								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								clean();

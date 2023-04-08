@@ -115,10 +115,14 @@ public class Tienda implements Serializable {
 
 	public Componente EncontrarComponente(String codigo) {
 		Componente aux = null;
-		for (Componente comp : misComponentes) {
-			if (comp.getCodigo().equalsIgnoreCase(codigo)) {
-				aux = comp;
+		int	i=0;
+		boolean encontrado = false;
+		while (!encontrado && i< misComponentes.size()){
+			if (misComponentes.get(i).getCodigo().equalsIgnoreCase(codigo)){
+				encontrado = true;
+				aux=misComponentes.get(i);
 			}
+			i++;
 		}
 		return aux;
 	}
@@ -134,20 +138,29 @@ public class Tienda implements Serializable {
 
 	public Cliente EncontrarCliente(String cedula) {
 		Cliente aux= null;
-		for (Cliente cliente : getMisClientes()) {
-			if (cliente.getCedula().equalsIgnoreCase(cedula)) {
-				aux = cliente ;
+		int	i=0;
+		boolean encontrado = false;
+		while (!encontrado && i< misClientes.size()){
+			if (misClientes.get(i).getCedula().equalsIgnoreCase(cedula)){
+				encontrado = true;
+				aux=misClientes.get(i);
 			}
+			i++;
 		}
 		return aux;
 	}
 
 	public Combo EncontrarCombo(String codigo) {
 		Combo aux = null;
-		for (Combo combo : misCombos) {
-			if (combo.getCodigo().equalsIgnoreCase(codigo)) {
-				aux = combo;
+		int	i=0;
+		boolean encontrado = false;
+		while (!encontrado && i< misClientes.size()){
+			if (misCombos.get(i).getCodigo().equalsIgnoreCase(codigo)){
+				encontrado = true;
+				aux=misCombos.get(i);
 			}
+			i++;
+		
 		}
 		return aux;
 	}
@@ -163,11 +176,15 @@ public class Tienda implements Serializable {
 
 	public boolean confirmLogin(String text, String text2) {
 		boolean login = false;
-		for (User user : misUsers) {
-			if (user.getUserName().equals(text)&& user.getPass().equals(text2)) {
-				loginUser = user;
+		int	i=0;
+		boolean encontrado = false;
+		while (!encontrado && i< misUsers.size()){
+			if (misUsers.get(i).getUserName().equals(text)&& misUsers.get(i).getPass().equals(text2)){
+				encontrado = true;
+				loginUser = misUsers.get(i);
 				login = true;
 			}
+			i++;
 		}
 		return login;
 	}
@@ -178,10 +195,15 @@ public class Tienda implements Serializable {
 
 	public User EncontrarUsuario(String usuario) {
 		User aux = null;
-		for (User us : misUsers) {
-			if (us.getUserName().equalsIgnoreCase(usuario)) {
-				aux = us;
+		
+		int	i=0;
+		boolean encontrado = false;
+		while (!encontrado && i< misUsers.size()){
+			if (misUsers.get(i).getUserName().equals(usuario)){
+				encontrado = true;
+				aux=misUsers.get(i);
 			}
+			i++;
 		}
 		return aux;
 	}

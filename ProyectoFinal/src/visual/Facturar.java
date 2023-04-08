@@ -215,14 +215,16 @@ public class Facturar extends JDialog {
 		btnDerecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (selectedComp!=null) {
+					selectedComp.setCant(selectedComp.getCant()-1);
 					model2.addElement(selectedComp.getCodigo()+" // "+selectedComp.getMarca()+" // "+"$"+df.format(selectedComp.getPrecio()));
 					total+= selectedComp.getPrecio();
-					selectedComp.setDisponibles(selectedComp.getDisponibles()-1);
+					
+					/*selectedComp.setDisponibles(selectedComp.getDisponibles()-1);
 					if (selectedComp.getDisponibles()<=selectedComp.getDispMin() && selectedComp.getDisponibles()> 0) {
 						selectedComp.setEstado('P');
 					} else if (selectedComp.getDisponibles()== 0) {
 						selectedComp.setEstado('N');
-					}
+					}*/
 					txtTotal.setText(""+df.format(total));     
 				} else if ( selectedComb !=null){
 					model2.addElement(selectedComb.getCodigo()+" // "+"Combo:"+selectedComb.getNombreComb()+" // "+"$"+df.format(selectedComb.getTotalD()));
@@ -252,13 +254,13 @@ public class Facturar extends JDialog {
 				if (selectedComp2!=null) {
 					total-= selectedComp2.getPrecio();
 					txtTotal.setText(""+df.format(total));
-					selectedComp2.setDisponibles(selectedComp2.getDisponibles()+1);
+					selectedComp.setCant(selectedComp.getCant()+1);
 					model2.remove(lst_Compra.getSelectedIndex());
-					if (selectedComp2.getDisponibles()>selectedComp2.getDispMin()) {
+					/*if (selectedComp2.getDisponibles()>selectedComp2.getDispMin()) {
 						selectedComp2.setEstado('D');
 					} else if (selectedComp2.getDisponibles()<= selectedComp2.getDispMin() && selectedComp2.getDisponibles()>0) {
 						selectedComp2.setEstado('P');
-					}
+					}*/
 				} else if (selectedComb2!=null) {
 					total-= selectedComb2.getTotalD();
 					model2.remove(lst_Compra.getSelectedIndex());
@@ -344,6 +346,9 @@ public class Facturar extends JDialog {
 								Componente myComp=Tienda.getInstance().EncontrarComponente(cod);
 								if(myComp!=null) {
 									auxComp.add(myComp);
+									myComp.setDisponibles(myComp.getCant());
+									ActualizarEstado(myComp);
+									
 								} else {
 									Combo myComb=Tienda.getInstance().EncontrarCombo(cod);
 									if(myComb!=null) {
@@ -387,6 +392,13 @@ public class Facturar extends JDialog {
 				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						for (int i=1; i <model2.size(); i++) {
+							String help = model2.elementAt(i);
+							String[] parts = help.split(" // ");
+							String cod = parts[0];
+						Componente myComp = Tienda.getInstance().EncontrarComponente(cod);
+						myComp.setCant(myComp.getDisponibles());
+						}
 						dispose();
 					}
 				});
@@ -402,7 +414,14 @@ public class Facturar extends JDialog {
 	private void loadList1() {
 		model.removeAllElements();
 		model.addElement(titulo);
-		char a = 'N';
+		
+		for (Componente comp: Tienda.getInstance().getMisComponentes()) {
+			if (comp.getCant()>0) {
+				model.addElement(comp.getCodigo()+" // "+comp.getMarca()+" // "+"$"+df.format(comp.getPrecio()));
+			}
+		}
+		
+		/*char a = 'N';
 		for (Componente comp: Tienda.getInstance().getMisComponentes()) {
 			if (Character.compare(comp.getEstado(), a)!=0  ) {
 				model.addElement(comp.getCodigo()+" // "+comp.getMarca()+" // "+"$"+df.format(comp.getPrecio()));
@@ -418,11 +437,19 @@ public class Facturar extends JDialog {
 			if (y==0) {
 			model.addElement(comb.getCodigo()+" // "+"Combo: "+comb.getNombreComb()+" // "+"$"+df.format(comb.getTotalD()));
 			}
-		} 
+		} */
+		
 
 	}
 
-
+    private void ActualizarEstado(Componente comp) {
+    	if (comp.getDisponibles()<=comp.getDispMin()& comp.getDisponibles()> 0) {
+			comp.setEstado('P');
+		} else if (comp.getDisponibles()== 0) {
+			comp.setEstado('N');
+		}
+    	
+    }
 
 	private void clean() {
 		txtNombre.setText("");
