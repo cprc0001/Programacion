@@ -222,6 +222,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmReporteDeClientes = new JMenuItem("Reporte de Clientes");
 		mntmReporteDeClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				ReporteCliente repC = new ReporteCliente();
 				repC.setModal(true);
 				repC.setVisible(true);
@@ -231,6 +232,15 @@ public class Principal extends JFrame {
 		mnAdministrativo.add(mntmReporteDeClientes);
 
 		JMenuItem mntmReporteDeVentas = new JMenuItem("Reporte de Ventas");
+		mntmReporteDeVentas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ReporteVentas repV = new ReporteVentas();
+				repV.setModal(true);
+				repV.setVisible(true); 
+				
+			}
+		});
 		mnAdministrativo.add(mntmReporteDeVentas);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

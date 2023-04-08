@@ -121,8 +121,6 @@ public class ReporteCliente extends JDialog {
 				});
 				btnOk.setActionCommand("OK");
 				buttonPane.add(btnOk);
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
 			}
 		

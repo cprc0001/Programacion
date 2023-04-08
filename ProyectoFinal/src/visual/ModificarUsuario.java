@@ -57,7 +57,7 @@ public class ModificarUsuario extends JDialog {
 			panel.setLayout(null);
 
 			JLabel lblNombre = new JLabel("Nuevo nombre Usuario:");
-			lblNombre.setBounds(20, 26, 127, 14);
+			lblNombre.setBounds(20, 26, 148, 14);
 			panel.add(lblNombre);
 
 			txtNombre = new JTextField();
@@ -66,7 +66,7 @@ public class ModificarUsuario extends JDialog {
 			panel.add(txtNombre);
 			{
 				JLabel lblNuevaPassword = new JLabel(" Nueva Contraseña:");
-				lblNuevaPassword.setBounds(190, 26, 97, 14);
+				lblNuevaPassword.setBounds(190, 26, 117, 14);
 				panel.add(lblNuevaPassword);
 			}
 			{
@@ -86,7 +86,7 @@ public class ModificarUsuario extends JDialog {
 			panel.add(label);
 
 			JLabel lblConfirmarContrasea = new JLabel("Confirmar Contraseña:");
-			lblConfirmarContrasea.setBounds(190, 91, 117, 14);
+			lblConfirmarContrasea.setBounds(190, 91, 147, 14);
 			panel.add(lblConfirmarContrasea);
 
 			txtConfPassword = new JTextField();
