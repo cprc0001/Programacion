@@ -172,6 +172,9 @@ public class Tienda implements Serializable {
 		return login;
 	}
 	
+	public void ModificarUsuario(User user) { 
+		
+	}
 	
 	
 }

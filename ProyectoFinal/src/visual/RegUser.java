@@ -44,44 +44,44 @@ public class RegUser extends JDialog {
 	 */
 	public RegUser() {
 		setTitle("Registrar nuevo usuario");
-		setBounds(100, 100, 450, 228);
+		setBounds(100, 100, 373, 228);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
+
 		JLabel lblNombreUsuario = new JLabel("Nombre Usuario:");
 		lblNombreUsuario.setBounds(20, 26, 97, 14);
 		contentPanel.add(lblNombreUsuario);
-		
+
 		textField = new JTextField();
 		textField.setBounds(20, 49, 127, 20);
 		contentPanel.add(textField);
 		textField.setColumns(10);
-		
+
 		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Administrador", "Comercial"}));
 		comboBox.setBounds(20, 113, 127, 20);
 		contentPanel.add(comboBox);
-		
+
 		JLabel lblTipo = new JLabel("Tipo:");
-		lblTipo.setBounds(20, 88, 97, 14);
+		lblTipo.setBounds(20, 91, 97, 14);
 		contentPanel.add(lblTipo);
-		
+
 		textField_1 = new JTextField();
 		textField_1.setBounds(190, 49, 147, 20);
 		contentPanel.add(textField_1);
 		textField_1.setColumns(10);
-		
-		JLabel lblPassword = new JLabel("Password:");
-		lblPassword.setBounds(189, 26, 97, 14);
+
+		JLabel lblPassword = new JLabel("Contraseña:");
+		lblPassword.setBounds(190, 26, 97, 14);
 		contentPanel.add(lblPassword);
-		
-		JLabel lblConfirmarPassword = new JLabel("Confirmar Password:");
-		lblConfirmarPassword.setBounds(189, 88, 167, 14);
+
+		JLabel lblConfirmarPassword = new JLabel("Confirmar Contraseña:");
+		lblConfirmarPassword.setBounds(190, 91, 117, 14);
 		contentPanel.add(lblConfirmarPassword);
-		
+
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBounds(190, 113, 147, 20);
@@ -91,12 +91,12 @@ public class RegUser extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton okButton = new JButton("OK");
+				JButton okButton = new JButton("Registrar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						User user = new User(comboBox.getSelectedItem().toString(),textField.getText(),textField_1.getText());
-					    Tienda.getInstance().regUser(user);
-					    dispose();
+						Tienda.getInstance().regUser(user);
+						dispose();
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -104,7 +104,7 @@ public class RegUser extends JDialog {
 				getRootPane().setDefaultButton(okButton);
 			}
 			{
-				JButton cancelButton = new JButton("Cancel");
+				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

@@ -66,27 +66,25 @@ public class VerUsuarios extends JDialog {
 				panel.add(scrollPane, BorderLayout.CENTER);
 				{
 
-					String[] headers = {"Usuario","Contraseña"};
+					String[] headers = {"Usuario","Contraseña", "Tipo"};
 					table = new JTable();
 
-					/*
-					PARTE PARA MODIFICAR
+
 					table.addMouseListener(new MouseAdapter() {
-					@Override
-					public void mouseClicked(MouseEvent e) {
-						int index = table.getSelectedRow();
-						if(index>=0){
-							btnModificar.setEnabled(true);
-							String cedula = table.getValueAt(index, 0).toString();
-							selected =  Tienda.getInstance().EncontrarCliente(cedula);
+						@Override
+						public void mouseClicked(MouseEvent e) {
+							int index = table.getSelectedRow();
+							if(index>=0){
+								btnModificar.setEnabled(true);
+								//En la clase ListaClientes hay dos lineas de codigo mas que en este caso, creo que no son necesarias, lo menciono por si acaso
+							}
 						}
-					}
-					
+
 					});
-					 */
+
 					table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					scrollPane.setViewportView(table);
-					
+
 					model1 = new DefaultTableModel();
 					model1.setColumnIdentifiers(headers);
 					table.setModel(model1);
@@ -98,19 +96,17 @@ public class VerUsuarios extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnModificar = new JButton("Modificar");
-				
-			
-				/* btnModificar.addActionListener(new ActionListener() {
+				btnModificar = new JButton("Modificar");
+				btnModificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 
-						ModificarUsuario modUsuario = new ModificarUsuario(selected); 
+						ModificarUsuario modUsuario = new ModificarUsuario(selected); //Tengo problemas con el selected
 						modUsuario.setModal(true);
 						modUsuario.setVisible(true);
 						btnModificar.setEnabled(false);
 					}
-				}); */
-				 
+				});
+
 				btnModificar.setEnabled(false);
 				buttonPane.add(btnModificar);
 			}
@@ -123,8 +119,6 @@ public class VerUsuarios extends JDialog {
 				});
 				buttonPane.add(btnCancelar);
 			}
-
-
 		}
 		loadUsuarios();
 	}
@@ -135,6 +129,7 @@ public class VerUsuarios extends JDialog {
 		for (User aux : Tienda.getInstance().getMisUsers()){
 			rows[0] = aux.getUserName();
 			rows[1] = aux.getPass();
+			rows[2] = aux.getTipo();
 			model1.addRow(rows); 
 
 
