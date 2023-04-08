@@ -446,6 +446,9 @@ public class RegistroComp extends JDialog {
 								aux = new DiscoDuro (codigo, marca, precio, serie, modelo, capacidad, tipoC);
 								aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
 								aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+								if (aux.getDispMin()>=aux.getDisponibles()) {
+									aux.setEstado('P');
+								}
 								Tienda.getInstance().insertarComponente(aux);
 								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								clean();
@@ -463,6 +466,9 @@ public class RegistroComp extends JDialog {
 								aux = new MemoriaRam (codigo, marca, precio, serie, memoria, tipoMe);
 								aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
 								aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+								if (aux.getDispMin()>=aux.getDisponibles()) {
+									aux.setEstado('P');
+								}
 								Tienda.getInstance().insertarComponente(aux);
 								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								clean();
@@ -481,6 +487,9 @@ public class RegistroComp extends JDialog {
 								aux = new Microprocesador (codigo, marca, precio, serie, modelo, tipoCon, velocidad);
 								aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
 								aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+								if (aux.getDispMin()>=aux.getDisponibles()) {
+									aux.setEstado('P');
+								}
 								Tienda.getInstance().insertarComponente(aux);
 								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								clean();
@@ -501,6 +510,9 @@ public class RegistroComp extends JDialog {
 								aux = new MotherBoard (codigo, marca, precio, serie, modelo, tipoConector, tipoMemoria, conexionesDisco);
 								aux.setDispMin(Integer.valueOf(spnDispMin.getValue().toString()));
 								aux.setDisponibles(Integer.valueOf(spnDispReal.getValue().toString()));
+								if (aux.getDispMin()>=aux.getDisponibles()) {
+									aux.setEstado('P');
+								}
 								Tienda.getInstance().insertarComponente(aux);
 								JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 								clean();

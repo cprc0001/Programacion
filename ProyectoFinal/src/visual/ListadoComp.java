@@ -23,6 +23,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 
+import logico.Combo;
 import logico.Componente;
 import logico.DiscoDuro;
 import logico.MemoriaRam;
@@ -136,6 +137,20 @@ public class ListadoComp extends JDialog {
 							if(option == JOptionPane.OK_OPTION){
 								Tienda.getInstance().EliminarComponente(selected);
 								loadComponentes(0);
+
+								for (Combo comb : Tienda.getInstance().getMisCombos()){
+									int	i=0;
+									boolean encontrado = false;
+									while (!encontrado && i< comb.getMisComponentes().size()){
+										if (comb.getMisComponentes().get(i).getCodigo() == selected.getCodigo()){
+											Tienda.getInstance().EliminarCombo(comb);
+											encontrado = true;
+										}
+										i++;
+
+									}
+
+								}
 								btnEliminar.setEnabled(false);
 
 							}
@@ -236,7 +251,7 @@ public class ListadoComp extends JDialog {
 				}
 			}	
 		}
-		
+
 		if(index == 4){
 			for (Componente aux : Tienda.getInstance().getMisComponentes()) {
 				if(aux instanceof MotherBoard){
@@ -249,7 +264,7 @@ public class ListadoComp extends JDialog {
 				}
 			}	
 		}
-		
+
 	}
 }
 

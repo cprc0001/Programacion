@@ -12,19 +12,21 @@ import logico.User;
 import logico.Tienda;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class RegUser extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtUsuario;
 	private JComboBox comboBox;
+	private JPasswordField pswContr;
+	private JPasswordField pswConf;
 
 	/**
 	 * Launch the application.
@@ -55,10 +57,10 @@ public class RegUser extends JDialog {
 		lblNombreUsuario.setBounds(20, 26, 97, 14);
 		contentPanel.add(lblNombreUsuario);
 
-		textField = new JTextField();
-		textField.setBounds(20, 49, 127, 20);
-		contentPanel.add(textField);
-		textField.setColumns(10);
+		txtUsuario = new JTextField();
+		txtUsuario.setBounds(20, 49, 127, 20);
+		contentPanel.add(txtUsuario);
+		txtUsuario.setColumns(10);
 
 		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"<Seleccione>", "Administrador", "Comercial"}));
@@ -69,23 +71,21 @@ public class RegUser extends JDialog {
 		lblTipo.setBounds(20, 91, 97, 14);
 		contentPanel.add(lblTipo);
 
-		textField_1 = new JTextField();
-		textField_1.setBounds(190, 49, 147, 20);
-		contentPanel.add(textField_1);
-		textField_1.setColumns(10);
-
-		JLabel lblPassword = new JLabel("Contraseña:");
+		JLabel lblPassword = new JLabel("Contrasena:");
 		lblPassword.setBounds(190, 26, 97, 14);
 		contentPanel.add(lblPassword);
 
-		JLabel lblConfirmarPassword = new JLabel("Confirmar Contraseña:");
-		lblConfirmarPassword.setBounds(190, 91, 117, 14);
+		JLabel lblConfirmarPassword = new JLabel("Confirmar Contrasena:");
+		lblConfirmarPassword.setBounds(190, 91, 147, 14);
 		contentPanel.add(lblConfirmarPassword);
 
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(190, 113, 147, 20);
-		contentPanel.add(textField_2);
+		pswContr = new JPasswordField();
+		pswContr.setBounds(190, 48, 127, 20);
+		contentPanel.add(pswContr);
+
+		pswConf = new JPasswordField();
+		pswConf.setBounds(190, 110, 127, 20);
+		contentPanel.add(pswConf);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -94,9 +94,19 @@ public class RegUser extends JDialog {
 				JButton okButton = new JButton("Registrar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						User user = new User(comboBox.getSelectedItem().toString(),textField.getText(),textField_1.getText());
-						Tienda.getInstance().regUser(user);
-						dispose();
+						if (comboBox.getSelectedIndex()>0) {
+							if (String.valueOf(pswContr.getPassword()).equals(String.valueOf(pswConf.getPassword()))){
+								User user = new User(comboBox.getSelectedItem().toString(),txtUsuario.getText(),String.valueOf(pswContr.getPassword()));
+								Tienda.getInstance().regUser(user);
+								dispose();
+							} else {
+								JOptionPane.showMessageDialog(null, "Las contrase�as deben de coincidir", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+							}
+						} else {
+							JOptionPane.showMessageDialog(null, "Seleccione un tipo de usuario", "Error", JOptionPane.INFORMATION_MESSAGE);
+
+						}
 					}
 				});
 				okButton.setActionCommand("OK");

@@ -17,6 +17,7 @@ import logico.Tienda;
 import logico.User;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -115,7 +116,8 @@ public class Login extends JFrame {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Tienda.getInstance().confirmLogin(textField.getText(),textField_1.getText())){
+				if(Tienda.getInstance().confirmLogin(textField.getText(),String.valueOf(textField_1.getPassword()))){
+				   JOptionPane.showMessageDialog(null, "Usted está accediendo como:"+Tienda.getLoginUser().getTipo(), "Error", JOptionPane.INFORMATION_MESSAGE);
 					Principal frame = new Principal();
 					dispose();
 					frame.setVisible(true);

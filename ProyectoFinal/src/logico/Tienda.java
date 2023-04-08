@@ -19,7 +19,7 @@ public class Tienda implements Serializable {
 	public int codF= 1;
 	public int codComp = 1;
 
-	
+
 	public Tienda() {
 		super();
 		misClientes = new ArrayList<>();
@@ -27,9 +27,9 @@ public class Tienda implements Serializable {
 		misComponentes = new ArrayList<>();
 		misFacturas = new ArrayList<>();
 		misUsers = new ArrayList<>();
-		
+
 	}
-	
+
 	public static Tienda getInstance(){
 		if(tienda==null){
 			tienda = new Tienda();
@@ -92,23 +92,23 @@ public class Tienda implements Serializable {
 	public void setMisFacturas(ArrayList<Factura> misFacturas) {
 		this.misFacturas = misFacturas;
 	}
-	
+
 	public void insertarCombo(Combo combo) {
 		misCombos.add(combo);
 		codComb++;
-		
+
 	}
-	
+
 	public void insertarComponente(Componente componente) {
 		misComponentes.add(componente);
 		codComp++;
 	}
-	
+
 	public void insertarFactura (Factura factura) {
 		misFacturas.add(factura);
 		codF++;
 	}
-	
+
 	public void insertarCliente (Cliente cliente) {
 		misClientes.add(cliente);
 	}
@@ -125,11 +125,11 @@ public class Tienda implements Serializable {
 
 	public void EliminarComponente(Componente selected) {
 		misComponentes.remove(selected);
-		
+
 	}
-	
+
 	public void ModificarCliente(Cliente cliente) { 
-	
+
 	}
 
 	public Cliente EncontrarCliente(String cedula) {
@@ -154,13 +154,13 @@ public class Tienda implements Serializable {
 
 	public void EliminarCombo(Combo selected) {
 		misCombos.remove(selected);
-		
+
 	}
-	
+
 	public void regUser (User user) {
 		misUsers.add(user);
 	}
-	
+
 	public boolean confirmLogin(String text, String text2) {
 		boolean login = false;
 		for (User user : misUsers) {
@@ -171,10 +171,20 @@ public class Tienda implements Serializable {
 		}
 		return login;
 	}
-	
+
 	public void ModificarUsuario(User user) { 
-		
+
 	}
-	
-	
+
+	public User EncontrarUsuario(String usuario) {
+		User aux = null;
+		for (User us : misUsers) {
+			if (us.getUserName().equalsIgnoreCase(usuario)) {
+				aux = us;
+			}
+		}
+		return aux;
+	}
+
+
 }

@@ -187,8 +187,8 @@ public class Principal extends JFrame {
 		mnVentas.add(mntmListadoDeFacturas);
 
 		JMenu mnAdministrativo = new JMenu("Administracion");
-		if(Tienda.getLoginUser().getTipo().equalsIgnoreCase("Administrador")) {
-		mnAdministrativo.setEnabled(false);	
+		if(!Tienda.getLoginUser().getTipo().equalsIgnoreCase("Administrador")) {
+			mnAdministrativo.setEnabled(false);	
 		}
 		menuBar.add(mnAdministrativo);
 
@@ -198,11 +198,11 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Registrar Usuarios");
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				RegUser registrarUser = new RegUser();
 				registrarUser.setModal(true);
 				registrarUser.setVisible(true);
-				 
+
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_2);
@@ -210,11 +210,11 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Ver Usuarios");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				VerUsuarios verUser = new VerUsuarios();
 				verUser.setModal(true);
 				verUser.setVisible(true); 
-				 
+
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_3);
@@ -222,7 +222,7 @@ public class Principal extends JFrame {
 		JMenuItem mntmReporteDeClientes = new JMenuItem("Reporte de Clientes");
 		mntmReporteDeClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				ReporteCliente repC = new ReporteCliente();
 				repC.setModal(true);
 				repC.setVisible(true);
@@ -234,11 +234,11 @@ public class Principal extends JFrame {
 		JMenuItem mntmReporteDeVentas = new JMenuItem("Reporte de Ventas");
 		mntmReporteDeVentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				ReporteVentas repV = new ReporteVentas();
 				repV.setModal(true);
 				repV.setVisible(true); 
-				
+
 			}
 		});
 		mnAdministrativo.add(mntmReporteDeVentas);

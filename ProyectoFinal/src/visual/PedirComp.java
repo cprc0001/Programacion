@@ -123,10 +123,8 @@ public class PedirComp extends JDialog {
 							auxC.setEstado('D');
 						} else if (auxC.getDisponibles()< auxC.getDispMin() && auxC.getDisponibles()!=0) {
 							auxC.setEstado('P');
-							ListPedidos.loadComponentes();
-							
 						}
-						
+						ListPedidos.loadComponentes();
 						JOptionPane.showMessageDialog(null, "Operacion Exitosa", "Informacion", JOptionPane.INFORMATION_MESSAGE);
 						dispose();
 					}

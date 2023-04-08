@@ -76,8 +76,9 @@ public class VerUsuarios extends JDialog {
 							int index = table.getSelectedRow();
 							if(index>=0){
 								btnModificar.setEnabled(true);
-								//En la clase ListaClientes hay dos lineas de codigo mas que en este caso, creo que no son necesarias, lo menciono por si acaso
-							}
+								String usuario = table.getValueAt(index, 0).toString();
+								selected =  Tienda.getInstance().EncontrarUsuario(usuario);
+									}
 						}
 
 					});
@@ -100,7 +101,7 @@ public class VerUsuarios extends JDialog {
 				btnModificar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 
-						ModificarUsuario modUsuario = new ModificarUsuario(selected); //Tengo problemas con el selected
+						ModificarUsuario modUsuario = new ModificarUsuario(selected); 
 						modUsuario.setModal(true);
 						modUsuario.setVisible(true);
 						btnModificar.setEnabled(false);
