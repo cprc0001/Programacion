@@ -187,6 +187,9 @@ public class Principal extends JFrame {
 		mnVentas.add(mntmListadoDeFacturas);
 
 		JMenu mnAdministrativo = new JMenu("Administracion");
+		if(Tienda.getLoginUser().getTipo().equalsIgnoreCase("Administrador")) {
+		mnAdministrativo.setEnabled(false);	
+		}
 		menuBar.add(mnAdministrativo);
 
 		JMenu mnNewMenu = new JMenu("Usuarios");
@@ -207,6 +210,11 @@ public class Principal extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Ver Usuarios");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				VerUsuarios verUser = new VerUsuarios();
+				verUser.setModal(true);
+				verUser.setVisible(true); 
+				 
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem_3);

@@ -120,7 +120,7 @@ public class VerCombo extends JDialog {
 		panel_1.add(lblCodigo);
 
 		JLabel lblDesc = new JLabel("Descuento:");
-		lblDesc.setBounds(207, 136, 79, 20);
+		lblDesc.setBounds(209, 134, 79, 20);
 		panel_1.add(lblDesc);
 
 		txtDesc = new JTextField();
@@ -135,7 +135,7 @@ public class VerCombo extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				JButton btnListo = new JButton("Listo");
+				JButton btnListo = new JButton("Aceptar");
 				btnListo.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose();

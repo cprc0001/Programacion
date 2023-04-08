@@ -21,13 +21,15 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JPasswordField;
 
 public class Login extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
-	//Probando solución de error
+	private JPasswordField textField_1;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -82,7 +84,7 @@ public class Login extends JFrame {
 	public Login() {
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 323, 207);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -93,22 +95,22 @@ public class Login extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblUsuario = new JLabel("Usuario:");
-		lblUsuario.setBounds(39, 39, 69, 14);
+		lblUsuario.setBounds(10, 21, 69, 14);
 		panel.add(lblUsuario);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setBounds(39, 98, 105, 14);
+		lblContrasea.setBounds(10, 68, 105, 14);
 		panel.add(lblContrasea);
 		
 		textField = new JTextField();
-		textField.setBounds(39, 64, 191, 20);
+		textField.setBounds(10, 37, 174, 20);
 		panel.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(39, 117, 191, 20);
+		textField_1 = new JPasswordField();
+		textField_1.setBounds(10, 93, 174, 20);
 		panel.add(textField_1);
-		textField_1.setColumns(10);
+		
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
@@ -121,7 +123,9 @@ public class Login extends JFrame {
 				
 			}
 		});
-		btnLogin.setBounds(37, 175, 89, 23);
+		btnLogin.setBounds(198, 124, 89, 23);
 		panel.add(btnLogin);
+		
+		
 	}
 }
