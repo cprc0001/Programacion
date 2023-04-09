@@ -121,7 +121,10 @@ public class Login extends JFrame {
 					Principal frame = new Principal();
 					dispose();
 					frame.setVisible(true);
-				};
+				} else {
+					 JOptionPane.showMessageDialog(null, "Usuario o contrasena incorrecta", "Error", JOptionPane.INFORMATION_MESSAGE);
+						
+				}
 				
 			}
 		});

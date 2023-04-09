@@ -121,7 +121,7 @@ public class PedirComp extends JDialog {
 
 					cant= Integer.valueOf(spinner.getValue().toString());
 					auxC.setDisponibles(auxC.getDisponibles()+cant);
-					auxC.setCant(auxC.getDisponibles());
+					
 					if (auxC.getDisponibles()>auxC.getDispMin()) {
 						auxC.setEstado('D');
 					} else if (auxC.getDisponibles()< auxC.getDispMin() && auxC.getDisponibles()!=0) {
@@ -132,7 +132,7 @@ public class PedirComp extends JDialog {
 						for (Componente comp : Tienda.getInstance().getMisComponentes()) {
 							if (comp.getCodigo().equalsIgnoreCase(auxC.getCodigo())) {
 								comp.setDisponibles(auxC.getDisponibles());
-								comp.setCant(auxC.getDisponibles());
+								
 								if (comp.getDisponibles()>comp.getDispMin()) {
 									comp.setEstado('D');
 								} else if (auxC.getDisponibles()< auxC.getDispMin() && auxC.getDisponibles()!=0) {

@@ -5,6 +5,12 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.awt.event.ActionEvent;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -72,6 +78,17 @@ public class Facturar extends JDialog {
 	 * Create the dialog.
 	 */
 	public Facturar() {
+		
+		addWindowListener(new WindowAdapter() {
+			@Override
+
+			public void windowClosing(WindowEvent e) {
+		
+				cerrar();
+			}
+
+
+		});
 		setTitle("Generar Factura");
 		setBounds(100, 100, 522, 520);
 		getContentPane().setLayout(new BorderLayout());
@@ -222,7 +239,8 @@ public class Facturar extends JDialog {
 						selectedComp.setEstado('P');
 					} else if (selectedComp.getDisponibles()== 0) {
 						selectedComp.setEstado('N');
-					}
+					} 
+	
 					txtTotal.setText(""+df.format(total));     
 				} else if ( selectedComb !=null){
 					model2.addElement(selectedComb.getCodigo()+" // "+"Combo:"+selectedComb.getNombreComb()+" // "+"$"+df.format(selectedComb.getTotalD()));
@@ -234,6 +252,7 @@ public class Facturar extends JDialog {
 						} else if (comp.getDisponibles()== 0) {
 							comp.setEstado('N');
 						}
+						
 					}
 					//model.remove(listDisponibles.getSelectedIndex());
 					txtTotal.setText(""+df.format(total));     
@@ -259,6 +278,10 @@ public class Facturar extends JDialog {
 					} else if (selectedComp2.getDisponibles()<= selectedComp2.getDispMin() && selectedComp2.getDisponibles()>0) {
 						selectedComp2.setEstado('P');
 					}
+
+
+
+
 				} else if (selectedComb2!=null) {
 					total-= selectedComb2.getTotalD();
 					model2.remove(lst_Compra.getSelectedIndex());
@@ -270,11 +293,11 @@ public class Facturar extends JDialog {
 							comp.setEstado('P');
 						}
 					}
-					
+
 					txtTotal.setText(""+df.format(total));
 
 				}
-				
+
 				loadList1();
 				selectedComp2=null;
 				selectedComb2=null;
@@ -387,8 +410,8 @@ public class Facturar extends JDialog {
 				JButton cancelButton = new JButton("Cancelar");
 				cancelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						
-						
+						//Editando
+						cerrar();
 						dispose();
 					}
 				});
@@ -410,15 +433,15 @@ public class Facturar extends JDialog {
 				model.addElement(comp.getCodigo()+" // "+comp.getMarca()+" // "+"$"+df.format(comp.getPrecio()));
 			}
 		}
-        int y= 0;
+		int y= 0;
 		for (Combo comb: Tienda.getInstance().getMisCombos()) {
 			for (Componente comp : comb.getMisComponentes()) {
 				if (Character.compare(comp.getEstado(), a)==0) {
 					y++;
-					}
+				}
 			}
 			if (y==0) {
-			model.addElement(comb.getCodigo()+" // "+"Combo: "+comb.getNombreComb()+" // "+"$"+df.format(comb.getTotalD()));
+				model.addElement(comb.getCodigo()+" // "+"Combo: "+comb.getNombreComb()+" // "+"$"+df.format(comb.getTotalD()));
 			}
 		} 
 
@@ -448,4 +471,38 @@ public class Facturar extends JDialog {
 
 
 	}
+	
+	public void cerrar() {
+		for (int i=1; i <model2.size(); i++) {
+			String help = model2.elementAt(i);
+			String[] parts = help.split(" // ");
+			String cod = parts[0];
+
+			Componente myComp=Tienda.getInstance().EncontrarComponente(cod);
+			if(myComp!=null) {
+				myComp.setDisponibles(myComp.getDisponibles()+1);
+				if (myComp.getDisponibles()>myComp.getDispMin()) {
+					myComp.setEstado('D');
+				} else if (myComp.getDisponibles()<= myComp.getDispMin() && myComp.getDisponibles()>0) {
+					myComp.setEstado('P');
+				}
+			} else {
+				Combo myComb=Tienda.getInstance().EncontrarCombo(cod);
+				if(myComb!=null) {
+					for (Componente comp : myComb.getMisComponentes()) {
+						comp.setDisponibles(comp.getDisponibles()+1);
+						if (comp.getDisponibles()>comp.getDispMin()) {
+							comp.setEstado('D');
+						} else if (comp.getDisponibles()<= comp.getDispMin() && comp.getDisponibles()>0) {
+							comp.setEstado('P');
+						}
+					}
+				}
+			}
+
+		}
+		
+	}
+	
+	
 }

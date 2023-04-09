@@ -222,7 +222,6 @@ public class ListadoComp extends JDialog {
 					rows[1] = "Disco Duro";	
 					rows[2] = df.format(aux.getPrecio());
 					rows[3] = aux.getDisponibles();
-					rows[4] = aux.getCant();
 					model.addRow(rows);
 				}
 			}	
