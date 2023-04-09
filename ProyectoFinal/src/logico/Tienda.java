@@ -154,7 +154,7 @@ public class Tienda implements Serializable {
 		Combo aux = null;
 		int	i=0;
 		boolean encontrado = false;
-		while (!encontrado && i< misClientes.size()){
+		while (!encontrado && i< misCombos.size()){
 			if (misCombos.get(i).getCodigo().equalsIgnoreCase(codigo)){
 				encontrado = true;
 				aux=misCombos.get(i);
