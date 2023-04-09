@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logico.Tienda;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -16,7 +19,7 @@ import java.awt.event.ActionEvent;
 public class ReporteVentas extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField txtTotalVentas;
+	private JTextField txtVenta;
 
 	/**
 	 * Launch the application.
@@ -52,13 +55,16 @@ public class ReporteVentas extends JDialog {
 				panel.add(lblTotalVentas);
 			}
 			{
-				txtTotalVentas = new JTextField();
-				txtTotalVentas.setHorizontalAlignment(SwingConstants.CENTER);
-				txtTotalVentas.setText(""); 
-				txtTotalVentas.setEditable(false);
-				txtTotalVentas.setBounds(87, 55, 86, 20);
-				panel.add(txtTotalVentas);
-				txtTotalVentas.setColumns(10);
+				txtVenta = new JTextField();
+				txtVenta.setHorizontalAlignment(SwingConstants.CENTER);
+				txtVenta.setText(""); 
+				txtVenta.setEditable(false);
+				txtVenta.setBounds(87, 55, 86, 20);
+				panel.add(txtVenta);
+				txtVenta.setColumns(10);
+				
+				//SENTENCIA A TOMAR EN CUENTA
+				//txtVenta.setText(String.valueOf(Tienda.getInstance().TotalVendido()));
 			}
 		}
 		{

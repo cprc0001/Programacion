@@ -10,9 +10,12 @@ import logico.User;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.ActionEvent;
@@ -26,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.DecimalFormat;
 
 public class Principal extends JFrame {
 
@@ -234,11 +238,16 @@ public class Principal extends JFrame {
 		JMenuItem mntmReporteDeVentas = new JMenuItem("Reporte de Ventas");
 		mntmReporteDeVentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				
+				//PROBLEMAS CON "TotalVendido()" y quien sabe con que más porque ya me perdí
+				/* 
+				 DecimalFormat df = new DecimalFormat("0.00");
+				 JOptionPane.showMessageDialog(null, "Se ha vendido un total de: "+df.format(Tienda.getInstance().TotalVendido().PrecioFactura()), "Informacion", JOptionPane.INFORMATION_MESSAGE);
+				*/
+				
 				ReporteVentas repV = new ReporteVentas();
 				repV.setModal(true);
 				repV.setVisible(true); 
-
 			}
 		});
 		mnAdministrativo.add(mntmReporteDeVentas);

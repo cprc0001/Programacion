@@ -208,5 +208,15 @@ public class Tienda implements Serializable {
 		return aux;
 	}
 
+	//PARA REPORTE DINERO
+	 public float TotalVendido(){
+	 	float total = 0;
+	 	
+	 	for (Factura fac: getMisFacturas()){
+	 		total+=fac.PrecioFactura();
+	 	}
+	  	return total;
+	 } 
+	 
 
 }
