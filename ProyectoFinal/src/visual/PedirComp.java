@@ -55,7 +55,7 @@ public class PedirComp extends JDialog {
 	public PedirComp(Componente comp) {
 		auxC= comp;
 		setTitle("Pedir Componente");
-		setBounds(100, 100, 466, 240);
+		setBounds(100, 100, 466, 185);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -63,22 +63,22 @@ public class PedirComp extends JDialog {
 
 		JPanel panel = new JPanel();
 		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(10, 11, 428, 140);
+		panel.setBounds(10, 11, 428, 87);
 		contentPanel.add(panel);
 		panel.setLayout(null);
 
 		JLabel lblCodigo = new JLabel("C\u00F3digo:");
-		lblCodigo.setBounds(10, 15, 45, 14);
+		lblCodigo.setBounds(10, 14, 45, 14);
 		panel.add(lblCodigo);
 
 		txtCodigo = new JTextField();
 		txtCodigo.setEditable(false);
 		txtCodigo.setColumns(10);
-		txtCodigo.setBounds(57, 10, 140, 23);
+		txtCodigo.setBounds(83, 10, 114, 23);
 		panel.add(txtCodigo);
 
 		JLabel lblDisponible = new JLabel("Disponibles:");
-		lblDisponible.setBounds(10, 57, 71, 14);
+		lblDisponible.setBounds(10, 56, 71, 14);
 		panel.add(lblDisponible);
 
 		txtDisponible = new JTextField();

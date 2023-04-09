@@ -35,7 +35,7 @@ public class ReporteVentas extends JDialog {
 	 * Create the dialog.
 	 */
 	public ReporteVentas() {
-		setTitle("Reporte de Ventas");
+		setTitle("Reporte Total de Ventas");
 		setBounds(100, 100, 300, 190);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -54,7 +54,7 @@ public class ReporteVentas extends JDialog {
 			{
 				txtTotalVentas = new JTextField();
 				txtTotalVentas.setHorizontalAlignment(SwingConstants.CENTER);
-				txtTotalVentas.setText("120"); //Puse ese número fijo para probar el clean
+				txtTotalVentas.setText(""); 
 				txtTotalVentas.setEditable(false);
 				txtTotalVentas.setBounds(87, 55, 86, 20);
 				panel.add(txtTotalVentas);
@@ -66,31 +66,17 @@ public class ReporteVentas extends JDialog {
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
-				
-				JButton btnOk = new JButton("OK");
-				btnOk.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						clean();
-					}
-				});
-				btnOk.setActionCommand("OK");
-				buttonPane.add(btnOk);
-				getRootPane().setDefaultButton(btnOk);
-			}
-			{
-				JButton btnCancelar = new JButton("Cancelar");
-				btnCancelar.addActionListener(new ActionListener() {
+				JButton btnAceptar = new JButton("Aceptar");
+				btnAceptar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						dispose ();
 					}
 				});
-				buttonPane.add(btnCancelar);
+				buttonPane.add(btnAceptar);
 			}
 		}
 	}
 	
-	private void clean() {
-		txtTotalVentas.setText("");
-	}
+	
 
 }

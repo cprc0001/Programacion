@@ -56,7 +56,7 @@ public class ModificarCliente extends JDialog {
 		panel.setLayout(null);
 
 		JLabel lblCedula = new JLabel("Cedula:");
-		lblCedula.setBounds(10, 15, 45, 14);
+		lblCedula.setBounds(10, 15, 76, 14);
 		panel.add(lblCedula);
 
 		txtCedula = new JTextField();
@@ -66,7 +66,7 @@ public class ModificarCliente extends JDialog {
 		panel.add(txtCedula);
 
 		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setBounds(10, 57, 52, 14);
+		lblNombre.setBounds(10, 57, 76, 14);
 		panel.add(lblNombre);
 
 		txtNombre = new JTextField();
@@ -75,7 +75,7 @@ public class ModificarCliente extends JDialog {
 		panel.add(txtNombre);
 
 		JLabel lblTelefono = new JLabel("Telefono:");
-		lblTelefono.setBounds(289, 57, 52, 14);
+		lblTelefono.setBounds(289, 57, 76, 14);
 		panel.add(lblTelefono);
 
 		txtTelefono = new JTextField();
@@ -84,7 +84,7 @@ public class ModificarCliente extends JDialog {
 		panel.add(txtTelefono);
 
 		JLabel lblDireccion = new JLabel("Direccion:");
-		lblDireccion.setBounds(10, 96, 52, 14);
+		lblDireccion.setBounds(10, 96, 88, 14);
 		panel.add(lblDireccion);
 
 		txtDireccion = new JTextField();

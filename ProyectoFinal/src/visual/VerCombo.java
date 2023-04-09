@@ -57,7 +57,7 @@ public class VerCombo extends JDialog {
 	 */
 	public VerCombo(Combo comb) {
 		auxComb= comb;
-		setTitle("Ver Componente");
+		setTitle("Ver detalles del combo seleccionado");
 		setBounds(100, 100, 496, 353);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));

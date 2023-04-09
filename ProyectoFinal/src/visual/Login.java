@@ -117,7 +117,7 @@ public class Login extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(Tienda.getInstance().confirmLogin(textField.getText(),String.valueOf(textField_1.getPassword()))){
-				   JOptionPane.showMessageDialog(null, "Usted está accediendo como:"+Tienda.getLoginUser().getTipo(), "Error", JOptionPane.INFORMATION_MESSAGE);
+				   JOptionPane.showMessageDialog(null, "Usted esta accediendo como: "+Tienda.getLoginUser().getTipo(), "Informacion", JOptionPane.INFORMATION_MESSAGE);
 					Principal frame = new Principal();
 					dispose();
 					frame.setVisible(true);

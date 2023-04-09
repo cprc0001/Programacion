@@ -48,14 +48,14 @@ public class ModificarUsuario extends JDialog {
 	public ModificarUsuario(User auxU) {
 		user = auxU;
 		setTitle("Modificar Usuario");
-		setBounds(100, 100, 373, 244);
+		setBounds(100, 100, 367, 244);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
 			JPanel panel = new JPanel();
-			panel.setBounds(0, 0, 357, 156);
+			panel.setBounds(10, 11, 331, 150);
 			contentPanel.add(panel);
 			panel.setLayout(null);
 
@@ -68,7 +68,7 @@ public class ModificarUsuario extends JDialog {
 			txtNombre.setBounds(20, 49, 127, 20);
 			panel.add(txtNombre);
 			{
-				JLabel lblNuevaPassword = new JLabel("Nueva Contrasena:");
+				JLabel lblNuevaPassword = new JLabel("Nueva Contraseña:");
 				lblNuevaPassword.setBounds(183, 90, 117, 14);
 				panel.add(lblNuevaPassword);
 			}
@@ -77,17 +77,17 @@ public class ModificarUsuario extends JDialog {
 			label.setBounds(183, 26, 97, 14);
 			panel.add(label);
 
-			JLabel lblConfirmarContrasea = new JLabel("Contrasena actual:");
+			JLabel lblConfirmarContrasea = new JLabel("Contraseña actual:");
 			lblConfirmarContrasea.setBounds(20, 90, 147, 14);
 			panel.add(lblConfirmarContrasea);
 			
 			txtTipo = new JTextField();
 			txtTipo.setColumns(10);
-			txtTipo.setBounds(183, 46, 127, 20);
+			txtTipo.setBounds(183, 49, 127, 20);
 			panel.add(txtTipo);
 			
 			pswActual = new JPasswordField();
-			pswActual.setBounds(20, 114, 127, 20);
+			pswActual.setBounds(20, 111, 127, 20);
 			panel.add(pswActual);
 			
 			pswNueva = new JPasswordField();

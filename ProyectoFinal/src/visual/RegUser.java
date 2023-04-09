@@ -46,7 +46,7 @@ public class RegUser extends JDialog {
 	 */
 	public RegUser() {
 		setTitle("Registrar nuevo usuario");
-		setBounds(100, 100, 373, 228);
+		setBounds(100, 100, 354, 235);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,20 +71,20 @@ public class RegUser extends JDialog {
 		lblTipo.setBounds(20, 91, 97, 14);
 		contentPanel.add(lblTipo);
 
-		JLabel lblPassword = new JLabel("Contrasena:");
+		JLabel lblPassword = new JLabel("Contraseña:");
 		lblPassword.setBounds(190, 26, 97, 14);
 		contentPanel.add(lblPassword);
 
-		JLabel lblConfirmarPassword = new JLabel("Confirmar Contrasena:");
-		lblConfirmarPassword.setBounds(190, 91, 147, 14);
+		JLabel lblConfirmarPassword = new JLabel("Confirmar Contraseña:");
+		lblConfirmarPassword.setBounds(190, 91, 138, 14);
 		contentPanel.add(lblConfirmarPassword);
 
 		pswContr = new JPasswordField();
-		pswContr.setBounds(190, 48, 127, 20);
+		pswContr.setBounds(190, 49, 127, 20);
 		contentPanel.add(pswContr);
 
 		pswConf = new JPasswordField();
-		pswConf.setBounds(190, 110, 127, 20);
+		pswConf.setBounds(190, 113, 127, 20);
 		contentPanel.add(pswConf);
 		{
 			JPanel buttonPane = new JPanel();
@@ -100,7 +100,7 @@ public class RegUser extends JDialog {
 								Tienda.getInstance().regUser(user);
 								dispose();
 							} else {
-								JOptionPane.showMessageDialog(null, "Las contrase�as deben de coincidir", "Error", JOptionPane.INFORMATION_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Las contrase�as deben de coincidir", "Error", JOptionPane.INFORMATION_MESSAGE);
 
 							}
 						} else {

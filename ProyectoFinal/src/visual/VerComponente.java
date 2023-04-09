@@ -21,6 +21,8 @@ import logico.DiscoDuro;
 import logico.MemoriaRam;
 import logico.Microprocesador;
 import logico.MotherBoard;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class VerComponente extends JDialog {
 
@@ -68,6 +70,7 @@ public class VerComponente extends JDialog {
 	 * Create the dialog.
 	 */
 	public VerComponente(Componente comp) {
+		setTitle("Detalles del componente seleccionado");
 		auxComp = comp;
 		setBounds(100, 100, 423, 410);
 		setLocationRelativeTo(null);
@@ -326,6 +329,10 @@ public class VerComponente extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton cancelButton = new JButton("Aceptar");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}

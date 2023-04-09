@@ -112,15 +112,23 @@ public class ReporteCliente extends JDialog {
 					}
 				});
 				
-				JButton btnOk = new JButton("OK");
-				btnOk.addActionListener(new ActionListener() {
+				JButton btnAceptar = new JButton("Aceptar");
+				btnAceptar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						clean();
 					}
 
 				});
-				btnOk.setActionCommand("OK");
-				buttonPane.add(btnOk);
+				btnAceptar.setActionCommand("OK");
+				buttonPane.add(btnAceptar);
+				
+				JButton btnCancelar = new JButton("Cancelar");
+				btnCancelar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						dispose();
+					}
+				});
+				buttonPane.add(btnCancelar);
 				getRootPane().setDefaultButton(okButton);
 			}
 		
