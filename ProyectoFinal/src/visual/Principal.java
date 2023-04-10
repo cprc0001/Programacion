@@ -23,18 +23,29 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.text.DecimalFormat;
 
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
 	private Dimension dim;
+	private DecimalFormat df = new DecimalFormat("0.00");
+	static DataInputStream EntradaSocket;
+	static DataOutputStream SalidaSocket;
+	private byte [] byteArray;
+	private int in;
+	static Socket sfd = null;
 
 	/**
 	 * Launch the application.
@@ -239,18 +250,55 @@ public class Principal extends JFrame {
 		mntmReporteDeVentas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//PROBLEMAS CON "TotalVendido()" y quien sabe con que más porque ya me perdí
-				/* 
-				 DecimalFormat df = new DecimalFormat("0.00");
-				 JOptionPane.showMessageDialog(null, "Se ha vendido un total de: "+df.format(Tienda.getInstance().TotalVendido().PrecioFactura()), "Informacion", JOptionPane.INFORMATION_MESSAGE);
-				*/
-				
-				ReporteVentas repV = new ReporteVentas();
-				repV.setModal(true);
-				repV.setVisible(true); 
+		   JOptionPane.showMessageDialog(null, "Se ha vendido un total de RD$: "+df.format(Tienda.getInstance().TotalVendido()), "Informacion", JOptionPane.INFORMATION_MESSAGE);
+
+			 
 			}
 		});
 		mnAdministrativo.add(mntmReporteDeVentas);
+		
+		JMenu mnNewMenu_1 = new JMenu("Respaldo");
+		menuBar.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Respaldar");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				try
+				{
+
+					sfd = new Socket("127.0.0.1",8000);
+					EntradaSocket = new DataInputStream(new FileInputStream (new File ("tienda.dat")));
+					SalidaSocket = new DataOutputStream(sfd.getOutputStream());
+					int unByte;
+					try
+					{
+						while ((unByte = EntradaSocket.read()) != -1) {
+							SalidaSocket.write(unByte);
+							SalidaSocket.flush();
+						}
+						
+					}
+					catch (IOException ioe)
+					{
+						System.out.println("Error: "+ioe);
+					}
+				}
+				catch (UnknownHostException uhe)
+				{
+					System.out.println("No se puede acceder al servidor.");
+					System.exit(1);
+				}
+				catch (IOException ioe)
+				{
+					System.out.println("Comunicaci�n rechazada.");
+					System.exit(1);
+				}
+			
+				
+			}
+		});
+		mnNewMenu_1.add(mntmNewMenuItem_4);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));

@@ -13,11 +13,11 @@ public class Servidor extends Thread
 		ServerSocket sfd = null;
 		try
 		{
-			sfd = new ServerSocket(7000);
+			sfd = new ServerSocket(8000);
 		}
 		catch (IOException ioe)
 		{
-			System.out.println("Comunicación rechazada."+ioe);
+			System.out.println("Comunicacion rechazada."+ioe);
 			System.exit(1);
 		}
 
@@ -36,7 +36,7 @@ public class Servidor extends Thread
 						bye.write(unByte);
 						hello.close();
 						bye.close();
-					
+						System.out.println("Escribiendo...");
 				} catch (IOException e) {
 					
 					e.printStackTrace();
